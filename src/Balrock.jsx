@@ -88,11 +88,12 @@ export default function BalrockPage() {
             <div key={index} className="py-4 border-b border-gray-600">
               <p className="text-xl text-gray-300 font-semibold">{show.date}</p>
               <p className="text-lg text-gray-400">{show.location} - {show.venue}
-                {show.buyLink &&
+              <p>  {show.buyLink &&
                      <a href={show.buyLink} className="ml-4 text-red-500 hover:underline">
                      Compra tu entrada
                    </a>
                 } 
+                </p>
               </p>
             </div>
           ))}
