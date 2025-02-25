@@ -1,9 +1,20 @@
 @import "tailwindcss";
 
-@media (max-width: 640px) {
+.banner-background {
+    background-image: url('/images/banner-desktop.png');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+  }
+
+  @media (max-width: 1024px) {
     .banner-background {
-      background-size: cover;
-      background-position: center;
-      background-repeat: no-repeat;
+      background-image: url('/images/banner-tablet.png');
+    }
+  }
+
+  @media (max-width: 767px) {
+    .banner-background {
+      background-image: url('/images/banner-mobile.png');
     }
   }

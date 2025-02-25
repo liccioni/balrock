@@ -4,7 +4,6 @@ import { FaInstagram, FaYoutube, FaFacebook } from "react-icons/fa";
 import './Balrock.css';
 
 const BASE_URL = import.meta.env.BASE_URL;
-const bannerUrl = `url('${BASE_URL}images/banner.png')`
 
 const images = [
   `${BASE_URL}images/balrock1.jpeg`,
@@ -24,16 +23,12 @@ export default function BalrockPage() {
     return (
       <div className="bg-black text-gray-200 font-sans">
         <section
-          className="relative h-screen bg-cover bg-center banner-background"
-          style={{ 
-            backgroundImage: bannerUrl 
-        }}
-        >
+          className="relative h-screen bg-cover bg-center banner-background">
           
-          <div className="relative z-10 flex flex-col items-center justify-end h-full pb-10">
+          <div className="relative z-10 flex flex-col items-center justify-end h-full">
             <motion.h1
               style={{ fontFamily: "'Cinzel', serif" }}
-              className="text-xl md:text-8xl font-bold text-red-800 drop-shadow-2xl"
+              className="text-2xl lg:text-8xl md:text-6xl sm:text-4xl font-bold text-red-800 drop-shadow-2xl"
               initial={{ opacity: 0, y: -50 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 1 }}
@@ -41,7 +36,7 @@ export default function BalrockPage() {
               &quot;Corred Insensatos...&quot;
             </motion.h1>
             <motion.p
-              className="mt-4 text-xl md:text-2xl text-gray-300"
+              className="mt-4 text-xl text-gray-300 mb-32 lg:mb-1 md:mb-10 sm:mb-10"
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ delay: 0.5, duration: 1 }}
