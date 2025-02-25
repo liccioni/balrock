@@ -16,59 +16,85 @@ const images = [
 ];
 
 export default function BalrockPage() {
-  return (
-    <div className="bg-black text-gray-300 font-serif">
-      {/* Banner */}
-      <section className="h-screen flex items-center justify-center bg-cover bg-center bg-no-repeat" style={{ backgroundImage: bannerUrl, backgroundSize: "cover", backgroundPosition: "center" }}>
-        <motion.h1 
-          className="text-6xl md:text-8xl font-bold text-red-600 drop-shadow-lg"
-          initial={{ opacity: 0, y: -50 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 1 }}
+    return (
+      <div className="bg-black text-gray-200 font-sans">
+        <section
+          className="relative h-screen bg-cover bg-center"
+          style={{ 
+            backgroundImage: bannerUrl 
+        }}
         >
           
-        </motion.h1>
-      </section>
-
-      {/* Image Carousel */}
-      <section className="py-12 bg-gray-900">
-        <div className="max-w-7xl mx-auto overflow-hidden">
-          <motion.div
-            className="flex space-x-4"
-            animate={{ x: [0, -100, -200, 0] }}
-            transition={{ repeat: Infinity, duration: 8, ease: "linear" }}
+          <div className="relative z-10 flex flex-col items-center justify-end h-full pb-10">
+            <motion.h1
+              style={{ fontFamily: "'Cinzel', serif" }}
+              className="text-xl md:text-8xl font-bold text-red-800 drop-shadow-2xl"
+              initial={{ opacity: 0, y: -50 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 1 }}
+            >
+              &quot;Corred Insensatos...&quot;
+            </motion.h1>
+            <motion.p
+              className="mt-4 text-xl md:text-2xl text-gray-300"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ delay: 0.5, duration: 1 }}
+            >
+              Desatando la furia del inframundo.
+            </motion.p>
+          </div>
+        </section>
+  
+        <section className="py-16 bg-gray-900">
+          <div className="max-w-5xl mx-auto px-4">
+            <motion.div
+              className="flex space-x-6"
+              animate={{ x: [0, -150, -300, 0] }}
+              transition={{ repeat: Infinity, duration: 10, ease: "linear" }}
+            >
+              {images.map((src, index) => (
+                <motion.img
+                  key={index}
+                  src={src}
+                  className="w-full max-w-md h-64 object-cover rounded-xl shadow-xl"
+                  alt="Presentación de Balrock"
+                  whileHover={{ scale: 1.05 }}
+                  transition={{ duration: 0.3 }}
+                />
+              ))}
+            </motion.div>
+          </div>
+        </section>
+  
+        <section className="py-20 bg-black text-center">
+          <motion.h2
+            className="text-4xl md:text-6xl text-red-500 font-bold"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 1.5 }}
           >
-            {images.map((src, index) => (
-              <img key={index} src={src} className="w-full max-w-sm h-60 object-cover rounded-lg shadow-lg" alt="Balrock performance" />
-            ))}
-          </motion.div>
-        </div>
-      </section>
-
-      {/* Hero Section */}
-      <section className="py-20 text-center bg-black">
-        <motion.h2 
-          className="text-4xl md:text-6xl text-red-600 font-bold"
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 1.5 }}
-        >
-          &quot;Corred Insensatos...&quot;
-        </motion.h2>
-        <p className="mt-4 max-w-2xl mx-auto text-lg text-gray-400">
-        Balrock es una amalgama de cuatro tipos nada corrientes y alocados, a los que algunos llaman &quot;banda&quot;. Está formada por Xavi en la sucututummtrapu (léase batería y coros), Jose Luis en el ninonino (otros le dicen guitarra), Gus, el otro ninonino y voz, y Diego al dumdumdum de cuerdas gruesas, además de algún que otro berrido en los coros.
-        </p>
-      </section>
-
-      {/* Footer */}
-      <footer className="py-8 bg-gray-900 text-center">
-        <div className="flex justify-center space-x-6">
-          <a href="https://www.instagram.com/balrockoficial/" className="text-gray-400 hover:text-red-600 text-3xl"><FaInstagram /></a>
-          <a href="#" className="text-gray-400 hover:text-red-600 text-3xl"><FaYoutube /></a>
-          <a href="https://www.facebook.com/balrockband" className="text-gray-400 hover:text-red-600 text-3xl"><FaFacebook /></a>
-        </div>
-        <p className="mt-4 text-gray-500">&copy; 2025 Balrock. All Rights Reserved.</p>
-      </footer>
-    </div>
-  );
-}
+            Siente el Fuego, Escucha el Rugido
+          </motion.h2>
+          <p className="mt-6 text-lg text-gray-400 max-w-2xl mx-auto">
+            Balrock trae la furia del inframundo al escenario con riffs poderosos y tambores estremecedores.
+          </p>
+        </section>
+  
+        <footer className="py-10 bg-gray-900 text-center">
+          <div className="flex justify-center space-x-8">
+            <motion.a href="https://www.instagram.com/balrockoficial/" className="text-gray-400 hover:text-red-500 text-3xl" whileHover={{ scale: 1.1 }}>
+              <FaInstagram />
+            </motion.a>
+            <motion.a href="#" className="text-gray-400 hover:text-red-500 text-3xl" whileHover={{ scale: 1.1 }}>
+              <FaYoutube />
+            </motion.a>
+            <motion.a href="https://www.facebook.com/balrockband" className="text-gray-400 hover:text-red-500 text-3xl" whileHover={{ scale: 1.1 }}>
+              <FaFacebook />
+            </motion.a>
+          </div>
+          <p className="mt-4 text-gray-500 text-sm">&copy; 2025 Balrock. Todos los derechos reservados.</p>
+        </footer>
+      </div>
+    );
+  }
