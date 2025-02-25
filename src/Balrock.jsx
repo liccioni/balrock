@@ -3,20 +3,23 @@ import { motion } from "framer-motion";
 import { FaInstagram, FaYoutube, FaFacebook } from "react-icons/fa";
 import './Balrock.css';
 
+const BASE_URL = import.meta.env.BASE_URL;
+const bannerUrl = `url('${BASE_URL}images/banner.png')`
+
 const images = [
-  "/images/balrock1.jpeg",
-  "/images/balrock2.jpeg",
-  "/images/balrock3.jpeg",
-  "/images/balrock4.jpeg",
-  "/images/balrock5.jpeg",
-  "/images/balrock6.jpeg",
+  `${BASE_URL}images/balrock1.jpeg`,
+  `${BASE_URL}images/balrock2.jpeg`,
+  `${BASE_URL}images/balrock3.jpeg`,
+  `${BASE_URL}images/balrock4.jpeg`,
+  `${BASE_URL}images/balrock5.jpeg`,
+  `${BASE_URL}images/balrock6.jpeg`,
 ];
 
 export default function BalrockPage() {
   return (
     <div className="bg-black text-gray-300 font-serif">
       {/* Banner */}
-      <section className="h-screen flex items-center justify-center bg-cover bg-center bg-no-repeat" style={{ backgroundImage: "url('/images/banner.png')", backgroundSize: "cover", backgroundPosition: "center" }}>
+      <section className="h-screen flex items-center justify-center bg-cover bg-center bg-no-repeat" style={{ backgroundImage: bannerUrl, backgroundSize: "cover", backgroundPosition: "center" }}>
         <motion.h1 
           className="text-6xl md:text-8xl font-bold text-red-600 drop-shadow-lg"
           initial={{ opacity: 0, y: -50 }}
