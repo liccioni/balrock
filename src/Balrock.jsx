@@ -63,9 +63,9 @@ export default function BalrockPage() {
       {/* Footer */}
       <footer className="py-8 bg-gray-900 text-center">
         <div className="flex justify-center space-x-6">
-          <a href="#" className="text-gray-400 hover:text-red-600 text-3xl"><FaInstagram /></a>
+          <a href="https://www.instagram.com/balrockoficial/" className="text-gray-400 hover:text-red-600 text-3xl"><FaInstagram /></a>
           <a href="#" className="text-gray-400 hover:text-red-600 text-3xl"><FaYoutube /></a>
-          <a href="#" className="text-gray-400 hover:text-red-600 text-3xl"><FaFacebook /></a>
+          <a href="https://www.facebook.com/balrockband" className="text-gray-400 hover:text-red-600 text-3xl"><FaFacebook /></a>
         </div>
         <p className="mt-4 text-gray-500">&copy; 2025 Balrock. All Rights Reserved.</p>
       </footer>
