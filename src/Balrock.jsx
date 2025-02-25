@@ -15,6 +15,11 @@ const images = [
   `${BASE_URL}images/balrock6.jpeg`,
 ];
 
+const upcomingShows = [
+    { date: "01 de Febrero, 2025", location: "Barcelona, España", venue: "Sala Hangar 05" },
+    { date: "24 de Mayo, 2025", location: "Barcelona, España", venue: "Sala Hangar 05" },
+  ];
+
 export default function BalrockPage() {
     return (
       <div className="bg-black text-gray-200 font-sans">
@@ -80,6 +85,19 @@ export default function BalrockPage() {
             Balrock trae la furia del inframundo al escenario con riffs poderosos y tambores estremecedores.
           </p>
         </section>
+
+        <section className="py-16 bg-gray-800 text-center">
+        <h2 className="text-4xl text-red-500 font-bold">Próximos Conciertos</h2>
+        <div className="mt-8 max-w-3xl mx-auto">
+          {upcomingShows.map((show, index) => (
+            <div key={index} className="py-4 border-b border-gray-600">
+              <p className="text-xl text-gray-300 font-semibold">{show.date}</p>
+              <p className="text-lg text-gray-400">{show.location} - {show.venue}</p>
+            </div>
+          ))}
+        </div>
+      </section>
+
   
         <footer className="py-10 bg-gray-900 text-center">
           <div className="flex justify-center space-x-8">
