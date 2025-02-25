@@ -16,7 +16,7 @@ const images = [
 
 const upcomingShows = [
     { date: "01 de Febrero, 2025", location: "Barcelona, España", venue: "Sala Hangar 05" },
-    { date: "24 de Mayo, 2025", location: "Barcelona, España", venue: "Sala Hangar 05" },
+    { date: "24 de Mayo, 2025", location: "Barcelona, España", venue: "Sala Hangar 05",buyLink:"https://www.eventbrite.com/e/entradas-balrock-ii-hangar-05-1260042293419?aff=oddtdtcreator" },
   ];
 
 export default function BalrockPage() {
@@ -87,7 +87,13 @@ export default function BalrockPage() {
           {upcomingShows.map((show, index) => (
             <div key={index} className="py-4 border-b border-gray-600">
               <p className="text-xl text-gray-300 font-semibold">{show.date}</p>
-              <p className="text-lg text-gray-400">{show.location} - {show.venue}</p>
+              <p className="text-lg text-gray-400">{show.location} - {show.venue}
+                {show.buyLink &&
+                     <a href={show.buyLink} className="ml-4 text-red-500 hover:underline">
+                     Compra tu entrada
+                   </a>
+                } 
+              </p>
             </div>
           ))}
         </div>
