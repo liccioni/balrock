@@ -24,7 +24,7 @@ export default function BalrockPage() {
     return (
       <div className="bg-black text-gray-200 font-sans">
         <section
-          className="relative h-screen bg-cover bg-center"
+          className="relative h-screen bg-cover bg-center banner-background"
           style={{ 
             backgroundImage: bannerUrl 
         }}
@@ -52,25 +52,25 @@ export default function BalrockPage() {
         </section>
   
         <section className="py-16 bg-gray-900">
-          <div className="max-w-5xl mx-auto px-4">
-            <motion.div
-              className="flex space-x-6"
-              animate={{ x: [0, -150, -300, 0] }}
-              transition={{ repeat: Infinity, duration: 10, ease: "linear" }}
-            >
-              {images.map((src, index) => (
-                <motion.img
-                  key={index}
-                  src={src}
-                  className="w-full max-w-md h-64 object-cover rounded-xl shadow-xl"
-                  alt="Presentación de Balrock"
-                  whileHover={{ scale: 1.05 }}
-                  transition={{ duration: 0.3 }}
-                />
-              ))}
-            </motion.div>
-          </div>
-        </section>
+        <div className="max-w-5xl mx-auto px-4 overflow-hidden">
+          <motion.div
+            className="flex flex-nowrap space-x-6"
+            animate={{ x: [0, -150, -300, 0] }}
+            transition={{ repeat: Infinity, duration: 10, ease: "linear" }}
+          >
+            {images.map((src, index) => (
+              <motion.img
+                key={index}
+                src={src}
+                className="w-full max-w-md h-64 object-cover rounded-xl shadow-xl"
+                alt="Presentación de Balrock"
+                whileHover={{ scale: 1.05 }}
+                transition={{ duration: 0.3 }}
+              />
+            ))}
+          </motion.div>
+        </div>
+      </section>
   
         <section className="py-20 bg-black text-center">
           <motion.h2

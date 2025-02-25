@@ -1,1 +1,7 @@
 @import "tailwindcss";
+
+@media (max-width: 640px) {
+    .banner-background {
+      background-size: 120% auto;
+    }
+  }
