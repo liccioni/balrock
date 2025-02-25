@@ -2,6 +2,8 @@
 
 @media (max-width: 640px) {
     .banner-background {
-      background-size: 120% auto;
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
     }
   }
