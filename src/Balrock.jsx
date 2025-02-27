@@ -19,6 +19,14 @@ const upcomingShows = [
     { date: "24 de Mayo, 2025", location: "Barcelona, España", venue: "Sala Hangar 05",buyLink:"https://www.eventbrite.com/e/entradas-balrock-ii-hangar-05-1260042293419?aff=oddtdtcreator" },
   ];
 
+const videos = [
+    "https://www.youtube.com/embed/XE-CbJvGQT4?si=EaIo1W-SyeoOXhJS",
+    "https://www.youtube.com/embed/dn-SqeMkZNY?si=RCDUu9zd3abPyg1T",
+    "https://www.youtube.com/embed/5sXMRUrFN2Q?si=xQieVz63MsLKKU1y",
+    "https://www.youtube.com/embed/qUs2-otPVhg?si=kOHwZomy-yQNcwRS",
+  ];
+  
+
 export default function BalrockPage() {
     return (
       <div className="bg-black text-gray-200 font-sans">
@@ -82,6 +90,29 @@ export default function BalrockPage() {
         </section>
 
         <section className="py-16 bg-gray-800 text-center">
+        <h2 className="text-4xl text-red-500 font-bold">Galería de Videos</h2>
+        <div className="mt-8 grid grid-cols-1 md:grid-cols-2 gap-6 max-w-5xl mx-auto px-4">
+          {videos.map((video, index) => (
+            <motion.div
+              key={index}
+              className="overflow-hidden rounded-lg shadow-lg"
+              whileHover={{ scale: 1.05 }}
+              transition={{ duration: 0.3 }}
+            >
+              <iframe
+                className="w-full h-64"
+                src={video}
+                title={`Balrock Video ${index + 1}`}
+                frameBorder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowFullScreen
+              ></iframe>
+             </motion.div>
+          ))}
+        </div>
+      </section>
+
+        <section className="py-16 bg-black-800 text-center">
         <h2 className="text-4xl text-red-500 font-bold">Próximos Conciertos</h2>
         <div className="mt-8 max-w-3xl mx-auto">
           {upcomingShows.map((show, index) => (
@@ -106,7 +137,7 @@ export default function BalrockPage() {
             <motion.a href="https://www.instagram.com/balrockoficial/" className="text-gray-400 hover:text-red-500 text-3xl" whileHover={{ scale: 1.1 }}>
               <FaInstagram />
             </motion.a>
-            <motion.a href="#" className="text-gray-400 hover:text-red-500 text-3xl" whileHover={{ scale: 1.1 }}>
+            <motion.a href="https://www.youtube.com/@BalrockOficial" className="text-gray-400 hover:text-red-500 text-3xl" whileHover={{ scale: 1.1 }}>
               <FaYoutube />
             </motion.a>
             <motion.a href="https://www.facebook.com/balrockband" className="text-gray-400 hover:text-red-500 text-3xl" whileHover={{ scale: 1.1 }}>
