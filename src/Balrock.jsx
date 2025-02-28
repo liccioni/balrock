@@ -117,7 +117,7 @@ export default function BalrockPage() {
                 data-cmp-src={video}
                 frameBorder="0"
                 allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
-                allowfullscreen
+                allowFullScreen
               ></iframe>
             </motion.div>
           ))}
@@ -132,7 +132,7 @@ export default function BalrockPage() {
               <p className="text-xl text-gray-300 font-semibold">{show.date}</p>
               <p className="text-lg text-gray-400">
                 {show.location} - {show.venue}
-                <p>
+                <br/>
                   {" "}
                   {show.buyLink && (
                     <a
@@ -142,7 +142,6 @@ export default function BalrockPage() {
                       Compra tu entrada
                     </a>
                   )}
-                </p>
               </p>
             </div>
           ))}
