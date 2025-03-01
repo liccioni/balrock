@@ -25,7 +25,7 @@ const upcomingShows = [
     location: "Barcelona, España",
     venue: "Sala Hangar 05",
     buyLink:
-      "https://www.eventbrite.com/e/entradas-balrock-ii-hangar-05-1260042293419?aff=oddtdtcreator&utm_source=balrock&utm_medium=referral&utm_campaign=ticket_sale",
+      "https://www.eventbrite.com/e/entradas-balrock-ii-hangar-05-1260042293419?utm_source=balrock&utm_medium=referral&utm_campaign=ticket_sale",
   },
 ];
 
@@ -138,6 +138,7 @@ export default function BalrockPage() {
                     <a
                       href={show.buyLink}
                       className="ml-4 text-red-500 hover:underline"
+                      target="_blank" rel="noopener noreferrer"
                     >
                       Compra tu entrada
                     </a>
