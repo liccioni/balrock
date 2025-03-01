@@ -175,10 +175,6 @@ export default function BalrockPage() {
         <p className="mt-4 text-gray-500 text-sm">
           &copy; 2025 Balrock. Todos los derechos reservados.
         </p>
-        <br></br>
-        <p>
-        <a href="?cmpscreen" className="cmpfooterlink cmpfooterlinkcmp">Ajustes de Privacidad</a>
-        </p>
       </footer>
     </div>
   );
