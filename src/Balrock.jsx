@@ -30,10 +30,10 @@ const upcomingShows = [
 ];
 
 const videos = [
-  "https://www.youtube-nocookie.com/embed/XE-CbJvGQT4?si=-qUf4StWxmOcMxU3",
-  "https://www.youtube.com/embed/dn-SqeMkZNY?si=RCDUu9zd3abPyg1T",
-  "https://www.youtube.com/embed/5sXMRUrFN2Q?si=xQieVz63MsLKKU1y",
-  "https://www.youtube.com/embed/qUs2-otPVhg?si=kOHwZomy-yQNcwRS",
+  "https://www.youtube-nocookie.com/embed/z_Qw45eToGM?si=UosVPi7TlCho-8Yw",
+  "https://www.youtube-nocookie.com/embed/kEFOoeGVU1M?si=jYBRmvW8BFcj4Q-1",
+  "https://www.youtube-nocookie.com/embed/lJwzjP6UgZA?si=IsQus9ckxxolzSGQ",
+  "https://www.youtube-nocookie.com/embed/0JuXgXAaOdo?si=GMBc8IVFLl23NNkh",
 ];
 
 export default function BalrockPage() {
