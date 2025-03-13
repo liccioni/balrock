@@ -159,7 +159,7 @@ export default function BalrockPage() {
             <FaInstagram />
           </motion.a>
           <motion.a
-            href="https://www.youtube.com/@BalrockOficial"
+            href="https://www.youtube.com/@balrockoficial-es"
             className="text-gray-400 hover:text-red-500 text-3xl"
             whileHover={{ scale: 1.1 }}
           >
