@@ -166,7 +166,7 @@ export default function BalrockPage() {
             <FaYoutube />
           </motion.a>
           <motion.a
-            href="https://www.facebook.com/balrockband"
+            href="https://www.facebook.com/balrockoficial"
             className="text-gray-400 hover:text-red-500 text-3xl"
             whileHover={{ scale: 1.1 }}
           >
