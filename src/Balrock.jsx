@@ -24,8 +24,6 @@ const upcomingShows = [
     date: "24 de Mayo, 2025",
     location: "Barcelona, España",
     venue: "Sala Hangar 05",
-    buyLink:
-      "https://www.eventbrite.com/e/entradas-balrock-ii-hangar-05-1260042293419?utm_source=balrock&utm_medium=referral&utm_campaign=ticket_sale",
   },
 ];
 
