@@ -147,12 +147,6 @@ export default function BalrockPage() {
           ))}
         </div>
       </section>
-      <section className="py-16 bg-gray-800 text-center">
-        <div className="mx-auto max-w-3xl">
-             <GigstarterButton/>
-        </div>
-      </section>
-
       <footer className="py-10 bg-gray-900 text-center">
         <div className="flex justify-center space-x-8">
           <motion.a
