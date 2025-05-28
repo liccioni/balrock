@@ -2,7 +2,6 @@
 import { motion } from "framer-motion";
 import { FaInstagram, FaYoutube, FaFacebook } from "react-icons/fa";
 import "./Balrock.css";
-import GigstarterButton from "./GigstarterButton";
 
 const BASE_URL = import.meta.env.BASE_URL;
 
