@@ -2,6 +2,7 @@
 import { motion } from "framer-motion";
 import { FaInstagram, FaYoutube, FaFacebook } from "react-icons/fa";
 import "./Balrock.css";
+import GigstarterButton from "./GigstarterButton";
 
 const BASE_URL = import.meta.env.BASE_URL;
 
@@ -146,6 +147,13 @@ export default function BalrockPage() {
           ))}
         </div>
       </section>
+
+       <section className="py-16 bg-gray-800 text-center">
+        <div className="relative z-10 flex flex-col items-center justify-end h-full">
+          <GigstarterButton/>
+        </div>
+      </section>
+
       <footer className="py-10 bg-gray-900 text-center">
         <div className="flex justify-center space-x-8">
           <motion.a
