@@ -17,6 +17,21 @@ test.beforeEach(async ({ page, baseURL }) => {
 test('renders the landing page with hero, concerts, and primary CTA', async ({ page }) => {
   await page.goto('/')
 
+  await expect(page).toHaveTitle('Balrock | Rock desde el inframundo')
+  await expect(page.locator('html')).toHaveAttribute('lang', 'es')
+  await expect(
+    page.locator('head meta[name="description"]'),
+  ).toHaveAttribute(
+    'content',
+    'Balrock desata riffs poderosos, tambores estremecedores y conciertos de rock desde el inframundo. Escucha videos, consulta fechas y contrata a la banda.',
+  )
+  await expect(
+    page.locator('head link[rel="canonical"]'),
+  ).toHaveAttribute('href', 'https://balrockoficial.com/')
+  await expect(
+    page.locator('head meta[property="og:image"]'),
+  ).toHaveAttribute('content', 'https://balrockoficial.com/images/balrock.jpeg')
+
   await expect(
     page.getByRole('heading', { name: '"Corred Insensatos..."' }),
   ).toBeVisible()
