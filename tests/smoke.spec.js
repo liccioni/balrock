@@ -1,4 +1,5 @@
 import { expect, test } from '@playwright/test'
+import AxeBuilder from '@axe-core/playwright'
 
 test.beforeEach(async ({ page, baseURL }) => {
   await page.route('**/*', (route) => {
@@ -38,6 +39,11 @@ test('renders the landing page with hero, concerts, and primary CTA', async ({ p
   await expect(
     page.getByRole('link', { name: 'Canal de YouTube de Balrock' }),
   ).toBeVisible()
+  await expect(page.getByRole('main')).toBeVisible()
+  await expect(page.getByRole('contentinfo')).toBeVisible()
+  await expect(
+    page.getByRole('navigation', { name: 'Redes sociales de Balrock' }),
+  ).toBeVisible()
 })
 
 test('uses the mobile hero background and keeps the CTA visible', async ({ page }) => {
@@ -56,4 +62,14 @@ test('uses the mobile hero background and keeps the CTA visible', async ({ page 
   })
 
   expect(heroBackgroundImage).toContain('banner-mobile.png')
+})
+
+test('passes an automated accessibility scan on the landing page', async ({ page }) => {
+  await page.goto('/')
+
+  const accessibilityScanResults = await new AxeBuilder({ page })
+    .disableRules(['color-contrast'])
+    .analyze()
+
+  expect(accessibilityScanResults.violations).toEqual([])
 })

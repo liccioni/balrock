@@ -3,12 +3,15 @@ import { formatShowDate } from "../content/siteContent";
 
 export default function ConcertsSection({ shows }) {
   return (
-    <section className="py-16 bg-black-800 text-center">
-      <h2 className="text-4xl text-red-500 font-bold">Próximos Conciertos</h2>
+    <section aria-labelledby="concerts-heading" className="py-16 bg-black-800 text-center">
+      <h2 id="concerts-heading" className="text-4xl text-red-500 font-bold">
+        Próximos Conciertos
+      </h2>
       <div className="mt-8 max-w-3xl mx-auto">
         {shows.length > 0 ? (
-          shows.map((show) => (
-            <div
+          <ul className="list-none m-0 p-0">
+            {shows.map((show) => (
+            <li
               key={`${show.date}-${show.venue}`}
               className="py-4 border-b border-gray-600"
             >
@@ -22,7 +25,7 @@ export default function ConcertsSection({ shows }) {
                 <p className="mt-3">
                   <a
                     href={show.buyLink}
-                    className="text-red-500 hover:underline"
+                    className="text-red-400 hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-red-400 focus-visible:ring-offset-2 focus-visible:ring-offset-black rounded-sm"
                     target="_blank"
                     rel="noopener noreferrer"
                   >
@@ -30,8 +33,9 @@ export default function ConcertsSection({ shows }) {
                   </a>
                 </p>
               ) : null}
-            </div>
-          ))
+            </li>
+          ))}
+          </ul>
         ) : (
           <p className="text-lg text-gray-400">
             No hay conciertos anunciados por ahora. Vuelve pronto para ver

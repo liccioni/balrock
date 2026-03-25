@@ -20,6 +20,7 @@ export default function GigstarterButton() {
       <a
         href="https://www.gigstarter.es/artists/balrock"
         aria-label="Contrata Balrock en Gigstarter"
+        className="focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-red-400 focus-visible:ring-offset-2 focus-visible:ring-offset-gray-800 rounded-sm"
         target="_blank"
         rel="noopener noreferrer"
       >

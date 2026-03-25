@@ -6,6 +6,9 @@ import ConcertsSection from "./components/ConcertsSection";
 import GigstarterButton from "./GigstarterButton";
 import { images, upcomingShows, videos } from "./content/siteContent";
 
+const socialLinkClassName =
+  "text-gray-300 hover:text-red-400 text-3xl transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-red-400 focus-visible:ring-offset-2 focus-visible:ring-offset-gray-900 rounded-sm";
+
 export default function BalrockPage() {
   const baseUrl = import.meta.env.BASE_URL;
   const currentYear = new Date().getFullYear();
@@ -17,13 +20,15 @@ export default function BalrockPage() {
 
   return (
     <div className="bg-black text-gray-200 font-sans">
-      <section
+      <header
         className="relative h-screen bg-cover bg-center banner-background"
         data-testid="hero-banner"
         style={heroBackgroundStyle}
+        role="banner"
       >
         <div className="relative z-10 flex flex-col items-center justify-end h-full">
           <motion.h1
+            id="hero-title"
             style={{ fontFamily: "'Cinzel', serif" }}
             className="text-2xl lg:text-8xl md:text-6xl sm:text-4xl font-bold text-red-800 drop-shadow-2xl"
             initial={{ opacity: 0, y: -50 }}
@@ -41,21 +46,25 @@ export default function BalrockPage() {
             Desatando la furia del inframundo.
           </motion.p>
         </div>
-      </section>
+      </header>
 
-      <section className="py-16 bg-gray-900">
+      <main aria-labelledby="hero-title">
+      <section
+        aria-labelledby="gallery-heading"
+        className="py-16 bg-gray-900"
+      >
         <div className="max-w-5xl mx-auto px-4 overflow-hidden">
           <motion.div
             className="flex flex-nowrap space-x-6"
             animate={{ x: [0, -150, -300, 0] }}
             transition={{ repeat: Infinity, duration: 10, ease: "linear" }}
           >
-            {images.map((src, index) => (
+            {images.map((image, index) => (
               <motion.img
                 key={index}
-                src={src}
+                src={image.src}
                 className="w-full max-w-md h-64 object-cover rounded-xl shadow-xl"
-                alt="Presentación de Balrock"
+                alt={image.alt}
                 whileHover={{ scale: 1.05 }}
                 transition={{ duration: 0.3 }}
               />
@@ -64,8 +73,9 @@ export default function BalrockPage() {
         </div>
       </section>
 
-      <section className="py-20 bg-black text-center">
+      <section aria-labelledby="story-heading" className="py-20 bg-black text-center">
         <motion.h2
+          id="story-heading"
           className="text-4xl md:text-6xl text-red-500 font-bold"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
@@ -79,8 +89,10 @@ export default function BalrockPage() {
         </p>
       </section>
 
-      <section className="py-16 bg-gray-800 text-center">
-        <h2 className="text-4xl text-red-500 font-bold">Galería de Videos</h2>
+      <section aria-labelledby="video-gallery-heading" className="py-16 bg-gray-800 text-center">
+        <h2 id="video-gallery-heading" className="text-4xl text-red-500 font-bold">
+          Galería de Videos
+        </h2>
         <div className="mt-8 grid grid-cols-1 md:grid-cols-2 gap-6 max-w-5xl mx-auto px-4">
           {videos.map((video, index) => (
             <motion.div
@@ -93,10 +105,10 @@ export default function BalrockPage() {
                 data-cmp-vendor="s30"
                 src="about:blank"
                 className="cmplazyload w-full h-64"
-                title={`Balrock Video ${index + 1}`}
+                title={video.title}
                 width="560"
                 height="315"
-                data-cmp-src={video}
+                data-cmp-src={video.src}
                 frameBorder="0"
                 allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
                 allowFullScreen
@@ -108,18 +120,22 @@ export default function BalrockPage() {
 
       <ConcertsSection shows={upcomingShows} />
 
-       <section className="py-16 bg-gray-800 text-center">
+       <section aria-labelledby="booking-heading" className="py-16 bg-gray-800 text-center">
         <div className="relative z-10 flex flex-col items-center justify-end h-full">
+          <h2 id="booking-heading" className="sr-only">
+            Contratación
+          </h2>
           <GigstarterButton/>
         </div>
       </section>
+      </main>
 
       <footer className="py-10 bg-gray-900 text-center">
-        <div className="flex justify-center space-x-8">
+        <nav aria-label="Redes sociales de Balrock" className="flex justify-center space-x-8">
           <motion.a
             href="https://www.instagram.com/balrockoficial/"
             aria-label="Instagram de Balrock"
-            className="text-gray-400 hover:text-red-500 text-3xl"
+            className={socialLinkClassName}
             whileHover={{ scale: 1.1 }}
           >
             <FaInstagram />
@@ -127,7 +143,7 @@ export default function BalrockPage() {
           <motion.a
             href="https://www.youtube.com/@balrockoficial"
             aria-label="Canal de YouTube de Balrock"
-            className="text-gray-400 hover:text-red-500 text-3xl"
+            className={socialLinkClassName}
             whileHover={{ scale: 1.1 }}
           >
             <FaYoutube />
@@ -135,12 +151,12 @@ export default function BalrockPage() {
           <motion.a
             href="https://www.facebook.com/balrockband"
             aria-label="Facebook de Balrock"
-            className="text-gray-400 hover:text-red-500 text-3xl"
+            className={socialLinkClassName}
             whileHover={{ scale: 1.1 }}
           >
             <FaFacebook />
           </motion.a>
-        </div>
+        </nav>
         <p className="mt-4 text-gray-500 text-sm">
           &copy; {currentYear} Balrock. Todos los derechos reservados.
         </p>
