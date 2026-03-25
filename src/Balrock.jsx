@@ -2,35 +2,13 @@
 import { motion } from "framer-motion";
 import { FaInstagram, FaYoutube, FaFacebook } from "react-icons/fa";
 import "./Balrock.css";
+import ConcertsSection from "./components/ConcertsSection";
 import GigstarterButton from "./GigstarterButton";
-
-const BASE_URL = import.meta.env.BASE_URL;
-
-const images = [
-  `${BASE_URL}images/balrock1.jpeg`,
-  `${BASE_URL}images/balrock2.jpeg`,
-  `${BASE_URL}images/balrock3.jpeg`,
-  `${BASE_URL}images/balrock4.jpeg`,
-  `${BASE_URL}images/balrock5.jpeg`,
-  `${BASE_URL}images/balrock6.jpeg`,
-];
-
-const upcomingShows = [
-  {
-    date: "17 de Abril, 2026",
-    location: "Barcelona, España",
-    venue: "Bar Ceferino",
-  },
-];
-
-const videos = [
-  "https://www.youtube-nocookie.com/embed/z_Qw45eToGM?si=UosVPi7TlCho-8Yw",
-  "https://www.youtube-nocookie.com/embed/kEFOoeGVU1M?si=jYBRmvW8BFcj4Q-1",
-  "https://www.youtube-nocookie.com/embed/lJwzjP6UgZA?si=IsQus9ckxxolzSGQ",
-  "https://www.youtube-nocookie.com/embed/0JuXgXAaOdo?si=GMBc8IVFLl23NNkh",
-];
+import { images, upcomingShows, videos } from "./content/siteContent";
 
 export default function BalrockPage() {
+  const currentYear = new Date().getFullYear();
+
   return (
     <div className="bg-black text-gray-200 font-sans">
       <section className="relative h-screen bg-cover bg-center banner-background">
@@ -118,30 +96,7 @@ export default function BalrockPage() {
         </div>
       </section>
 
-      <section className="py-16 bg-black-800 text-center">
-        <h2 className="text-4xl text-red-500 font-bold">Próximos Conciertos</h2>
-        <div className="mt-8 max-w-3xl mx-auto">
-          {upcomingShows.map((show, index) => (
-            <div key={index} className="py-4 border-b border-gray-600">
-              <p className="text-xl text-gray-300 font-semibold">{show.date}</p>
-              <p className="text-lg text-gray-400">
-                {show.location} - {show.venue}
-                <br/>
-                  {" "}
-                  {show.buyLink && (
-                    <a
-                      href={show.buyLink}
-                      className="ml-4 text-red-500 hover:underline"
-                      target="_blank" rel="noopener noreferrer"
-                    >
-                      Compra tu entrada
-                    </a>
-                  )}
-              </p>
-            </div>
-          ))}
-        </div>
-      </section>
+      <ConcertsSection shows={upcomingShows} />
 
        <section className="py-16 bg-gray-800 text-center">
         <div className="relative z-10 flex flex-col items-center justify-end h-full">
@@ -174,7 +129,7 @@ export default function BalrockPage() {
           </motion.a>
         </div>
         <p className="mt-4 text-gray-500 text-sm">
-          &copy; 2025 Balrock. Todos los derechos reservados.
+          &copy; {currentYear} Balrock. Todos los derechos reservados.
         </p>
       </footer>
     </div>
