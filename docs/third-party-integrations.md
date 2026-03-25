@@ -14,6 +14,11 @@ these services fail to load.
   remain inactive until the user allows them
 - Privacy note: this is the primary consent layer and should remain ahead of
   analytics/bootstrap scripts
+- Language note: the site is Spanish-first, so the integration pins the CMP
+  language to `ES` in [`index.html`](../index.html) before the autoblocking
+  script loads
+- Operational note: copy for the first-layer dialog and blocked YouTube preview
+  cards is managed in the consentmanager dashboard, not in React components
 
 ## Google Tag Manager
 
