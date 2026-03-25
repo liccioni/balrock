@@ -9,7 +9,6 @@ export default function VideoSection({ videos, images }) {
     originalIndex: index,
   }));
   const activeVideo = videoGallery[activeVideoIndex];
-  const railVideos = videoGallery.filter((_, index) => index !== activeVideoIndex);
 
   return (
     <section
@@ -53,12 +52,16 @@ export default function VideoSection({ videos, images }) {
             </div>
           </article>
           <div className="video-rail" aria-label="Selector de videos de Balrock">
-            {railVideos.map((video, slotIndex) => (
+            {videoGallery.map((video) => {
+              const isActive = video.originalIndex === activeVideoIndex;
+
+              return (
               <button
                 key={video.src}
                 type="button"
                 onClick={() => setActiveVideoIndex(video.originalIndex)}
-                className="video-rail-card"
+                aria-pressed={isActive}
+                className={`video-rail-card ${isActive ? "is-active" : ""}`}
               >
                 <div
                   className="video-rail-image"
@@ -66,11 +69,12 @@ export default function VideoSection({ videos, images }) {
                   aria-hidden="true"
                 />
                 <div className="video-rail-copy">
-                  <p className="video-rail-kicker">Video {slotIndex + 1}</p>
+                  <p className="video-rail-kicker">Corte {video.originalIndex + 1}</p>
                   <p className="video-rail-title">{video.title}</p>
                 </div>
               </button>
-            ))}
+              );
+            })}
           </div>
         </div>
       </div>

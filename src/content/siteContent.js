@@ -38,7 +38,7 @@ export const upcomingShows = [
 export const videos = [
   {
     src: "https://www.youtube-nocookie.com/embed/z_Qw45eToGM?si=UosVPi7TlCho-8Yw",
-    title: "Balrock interpretando Corred Insensatos en directo",
+    title: "Balrock interpretando Ícaro en directo",
   },
   {
     src: "https://www.youtube-nocookie.com/embed/kEFOoeGVU1M?si=jYBRmvW8BFcj4Q-1",
