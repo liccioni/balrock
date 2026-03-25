@@ -3,22 +3,22 @@ import { formatShowDate } from "../content/siteContent";
 
 export default function ConcertsSection({ shows }) {
   return (
-    <section aria-labelledby="concerts-heading" className="py-16 bg-black-800 text-center">
-      <h2 id="concerts-heading" className="text-4xl text-red-500 font-bold">
+    <section aria-labelledby="concerts-heading" className="pt-4 text-left">
+      <h2 id="concerts-heading" className="text-3xl font-bold uppercase text-white md:text-4xl">
         Próximos Conciertos
       </h2>
-      <div className="mt-8 max-w-3xl mx-auto">
+      <div className="mt-8 max-w-3xl">
         {shows.length > 0 ? (
           <ul className="list-none m-0 p-0">
             {shows.map((show) => (
             <li
               key={`${show.date}-${show.venue}`}
-              className="py-4 border-b border-gray-600"
+              className="border-b border-white/10 py-5"
             >
-              <p className="text-xl text-gray-300 font-semibold">
+              <p className="text-xl font-semibold text-red-300">
                 {formatShowDate(show.date)}
               </p>
-              <p className="text-lg text-gray-400">
+              <p className="mt-2 text-lg text-gray-300">
                 {show.location} - {show.venue}
               </p>
               {show.buyLink ? (

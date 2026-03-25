@@ -15,9 +15,7 @@ test.beforeEach(async ({ page, baseURL }) => {
 test('renders under a non-root base path and resolves hero assets correctly', async ({ page }) => {
   await page.goto('./')
 
-  await expect(
-    page.getByRole('heading', { name: '"Corred Insensatos..."' }),
-  ).toBeVisible()
+  await expect(page.getByRole('heading', { name: 'Balrock', exact: true })).toBeVisible()
   await expect(
     page.getByRole('link', { name: 'Contrata Balrock en Gigstarter' }),
   ).toBeVisible()
