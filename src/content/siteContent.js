@@ -54,6 +54,8 @@ export const videos = [
   },
 ];
 
+export const spotifyEmbedUrl = "";
+
 export function formatShowDate(date) {
   const [year, month, day] = date.split("-").map(Number);
   const showDate = new Date(Date.UTC(year, month - 1, day));

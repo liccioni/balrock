@@ -7,9 +7,7 @@ describe("ConcertsSection", () => {
     render(<ConcertsSection shows={[]} />);
 
     expect(
-      screen.getByText(
-        "No hay conciertos anunciados por ahora. Vuelve pronto para ver nuevas fechas.",
-      ),
+      screen.getByText("No hay conciertos anunciados por ahora. Vuelve pronto."),
     ).toBeVisible();
   });
 
@@ -27,12 +25,9 @@ describe("ConcertsSection", () => {
     );
 
     expect(screen.getByText("17 de Abril, 2026")).toBeVisible();
-    expect(screen.getByText("Bar Ceferino")).toBeVisible();
-    expect(screen.getByText("Barcelona, España")).toBeVisible();
+    expect(screen.getByText("Bar Ceferino · Barcelona, España")).toBeVisible();
     expect(screen.getByText("Próximamente")).toBeVisible();
-    expect(
-      screen.queryByRole("link", { name: "Compra tu entrada" }),
-    ).not.toBeInTheDocument();
+    expect(screen.queryByRole("link", { name: "Entradas" })).not.toBeInTheDocument();
   });
 
   it("renders multiple shows and only shows buy links when present", () => {
@@ -56,11 +51,10 @@ describe("ConcertsSection", () => {
 
     expect(screen.getByText("17 de Abril, 2026")).toBeVisible();
     expect(screen.getByText("3 de Mayo, 2026")).toBeVisible();
-    expect(screen.getByText("Sala Mon")).toBeVisible();
-    expect(screen.getByText("Madrid, España")).toBeVisible();
+    expect(screen.getByText("Sala Mon · Madrid, España")).toBeVisible();
     expect(screen.getByText("Próximamente")).toBeVisible();
 
-    const buyLinks = screen.getAllByRole("link", { name: "Compra tu entrada" });
+    const buyLinks = screen.getAllByRole("link", { name: "Entradas" });
     expect(buyLinks).toHaveLength(1);
     expect(buyLinks[0]).toHaveAttribute(
       "href",

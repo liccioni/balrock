@@ -8,13 +8,13 @@ export default defineConfig({
   retries: process.env.CI ? 2 : 0,
   reporter: process.env.CI ? [['github'], ['html', { open: 'never' }]] : 'list',
   use: {
-    baseURL: 'http://127.0.0.1:4174/balrock/',
+    baseURL: 'http://127.0.0.1:4176/balrock/',
     trace: 'on-first-retry',
   },
   webServer: {
-    command: 'npm run build:base-path && node scripts/serve-base-path.mjs',
-    url: 'http://127.0.0.1:4174/balrock/',
-    reuseExistingServer: !process.env.CI,
+    command: 'npm run build:base-path && PORT=4176 node scripts/serve-base-path.mjs',
+    url: 'http://127.0.0.1:4176/balrock/',
+    reuseExistingServer: false,
   },
   projects: [
     {

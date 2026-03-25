@@ -33,28 +33,26 @@ test('renders the landing page even when optional third-party requests fail', as
   ).toHaveAttribute('content', 'https://balrockoficial.com/images/balrock.jpeg')
 
   await expect(page.getByTestId('hero-banner')).toBeVisible()
-  await expect(page.getByText('Barcelona • Rock en directo')).toBeVisible()
-  await expect(page.locator('a[href="#contratacion"]')).toBeVisible()
-  await expect(page.locator('a[href="#videos"]')).toBeVisible()
-  await expect(page.getByRole('heading', { name: 'Mira cómo suena el escenario.' })).toBeVisible()
-  await expect(page.getByRole('heading', { name: 'Próximos Conciertos' })).toBeVisible()
-  await expect(page.getByRole('heading', { name: 'Lleva a Balrock a tu sala.' })).toBeVisible()
-  await expect(page.getByRole('link', { name: 'Contrata Balrock en Gigstarter' })).toBeVisible()
-  await expect(
-    page.getByText(/enlace de contratación sigue disponible/i),
-  ).toBeVisible()
+  await expect(page.getByTestId('hero-banner').getByRole('heading', { name: 'Balrock' })).toBeVisible()
+  await expect(page.getByText('Hard Rock desde Barcelona')).toBeVisible()
+  await expect(page.getByRole('link', { name: 'Ver directo' })).toBeVisible()
+  await expect(page.getByRole('heading', { name: 'El escenario habla.' })).toBeVisible()
+  await expect(page.getByRole('heading', { name: 'Próximos conciertos' })).toBeVisible()
+  await expect(page.getByRole('heading', { name: 'Únete al ruido.' })).toBeVisible()
+  await expect(page.getByRole('heading', { name: 'Trae a Balrock.' })).toBeVisible()
   await expect(page.getByText('17 de Abril, 2026')).toBeVisible()
-  await expect(page.getByText('Bar Ceferino')).toBeVisible()
-  await expect(page.getByText('Barcelona, España')).toBeVisible()
+  await expect(page.getByText('Bar Ceferino · Barcelona, España')).toBeVisible()
+  await expect(page.getByRole('link', { name: 'balrockoficial@gmail.com' })).toBeVisible()
+  await expect(page.getByRole('link', { name: 'Contrata Balrock en Gigstarter' })).toBeVisible()
 
-  await expect(
-    page.getByRole('link', { name: 'Facebook de Balrock' }),
-  ).toBeVisible()
   await expect(
     page.getByRole('link', { name: 'Instagram de Balrock' }),
   ).toBeVisible()
   await expect(
     page.getByRole('link', { name: 'Canal de YouTube de Balrock' }),
+  ).toBeVisible()
+  await expect(
+    page.getByRole('link', { name: 'Facebook de Balrock' }),
   ).toBeVisible()
   await expect(page.getByRole('main')).toBeVisible()
   await expect(page.getByRole('contentinfo')).toBeVisible()
@@ -72,14 +70,14 @@ test('uses the mobile hero background and keeps the CTA visible', async ({ page 
 
   await expect(page.getByTestId('hero-banner')).toBeVisible()
   await expect(
-    page.getByRole('link', { name: 'Contrata Balrock en Gigstarter' }),
+    page.getByRole('link', { name: 'Ver directo' }),
   ).toBeVisible()
 
   const heroBackgroundImage = await page.getByTestId('hero-banner').evaluate((element) => {
     return window.getComputedStyle(element).backgroundImage
   })
 
-  expect(heroBackgroundImage).toContain('banner-mobile.png')
+  expect(heroBackgroundImage).toContain('balrock1.jpeg')
 })
 
 test('passes an automated accessibility scan on the landing page', async ({ page }) => {

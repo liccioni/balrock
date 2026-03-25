@@ -17,12 +17,12 @@ test('renders under a non-root base path and resolves hero assets correctly', as
 
   await expect(page.getByTestId('hero-banner')).toBeVisible()
   await expect(
-    page.getByRole('link', { name: 'Contrata Balrock en Gigstarter' }),
+    page.getByRole('link', { name: 'Ver directo' }),
   ).toBeVisible()
 
   const heroBackgroundImage = await page.getByTestId('hero-banner').evaluate((element) => {
     return window.getComputedStyle(element).backgroundImage
   })
 
-  expect(heroBackgroundImage).toContain('/balrock/images/banner-desktop.png')
+  expect(heroBackgroundImage).toContain('/balrock/images/balrock1.jpeg')
 })

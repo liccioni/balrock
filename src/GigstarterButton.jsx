@@ -29,7 +29,7 @@ export default function GigstarterButton() {
 
   return (
     <div
-      className="gigstarter-button"
+      className="gigstarter-button flex flex-col items-center text-center"
       data-gigstarter-status={scriptStatus}
       data-slug="balrock"
       data-version="1"
@@ -38,7 +38,7 @@ export default function GigstarterButton() {
         href="https://www.gigstarter.es/artists/balrock"
         aria-label="Contrata Balrock en Gigstarter"
         aria-describedby="gigstarter-fallback-copy"
-        className="focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-red-400 focus-visible:ring-offset-2 focus-visible:ring-offset-gray-800 rounded-sm"
+        className="inline-flex justify-center focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-red-400 focus-visible:ring-offset-2 focus-visible:ring-offset-gray-800 rounded-sm"
         target="_blank"
         rel="noopener noreferrer"
       >
