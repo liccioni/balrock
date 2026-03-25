@@ -10,9 +10,7 @@
     "test": "npm run build && npm run test:smoke",
     "test:smoke": "playwright test",
     "ci": "npm run lint && npm run build && npm run test:smoke",
-    "preview": "vite preview",
-    "predeploy": "npm run build",
-    "deploy": "gh-pages -d dist"
+    "preview": "vite preview"
   },
   "dependencies": {
     "@tailwindcss/vite": "^4.0.8",
