@@ -1,20 +1,33 @@
 @import "tailwindcss";
 
 .banner-background {
-    background-image: url('/images/banner-desktop.png');
+    background-image: var(--banner-desktop);
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
   }
 
+.hero-veil {
+    background:
+      linear-gradient(180deg, rgba(0, 0, 0, 0.18) 0%, rgba(0, 0, 0, 0.68) 58%, rgba(0, 0, 0, 0.94) 100%);
+  }
+
+.hero-glow {
+    background:
+      radial-gradient(circle at 18% 28%, rgba(173, 33, 33, 0.34), transparent 32%),
+      radial-gradient(circle at 82% 18%, rgba(255, 186, 120, 0.14), transparent 24%);
+    mix-blend-mode: screen;
+    opacity: 0.9;
+  }
+
   @media (max-width: 1024px) {
     .banner-background {
-      background-image: url('/images/banner-tablet.png');
+      background-image: var(--banner-tablet);
     }
   }
 
   @media (max-width: 767px) {
     .banner-background {
-      background-image: url('/images/banner-mobile.png');
+      background-image: var(--banner-mobile);
     }
   }
