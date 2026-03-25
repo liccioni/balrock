@@ -17,14 +17,9 @@ const images = [
 
 const upcomingShows = [
   {
-    date: "01 de Febrero, 2025",
+    date: "17 de Abril, 2026",
     location: "Barcelona, España",
-    venue: "Sala Hangar 05",
-  },
-  {
-    date: "24 de Mayo, 2025",
-    location: "Barcelona, España",
-    venue: "Sala Hangar 05",
+    venue: "Bar Ceferino",
   },
 ];
 
@@ -171,7 +166,7 @@ export default function BalrockPage() {
             <FaYoutube />
           </motion.a>
           <motion.a
-            href="https://www.facebook.com/balrockoficial"
+            href="https://www.facebook.com/balrockband"
             className="text-gray-400 hover:text-red-500 text-3xl"
             whileHover={{ scale: 1.1 }}
           >
