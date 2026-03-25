@@ -14,7 +14,7 @@ test.beforeEach(async ({ page, baseURL }) => {
   })
 })
 
-test('renders the landing page with hero, concerts, and primary CTA', async ({ page }) => {
+test('renders the landing page even when optional third-party requests fail', async ({ page }) => {
   await page.goto('/')
 
   await expect(page).toHaveTitle('Balrock | Rock desde el inframundo')
@@ -40,6 +40,11 @@ test('renders the landing page with hero, concerts, and primary CTA', async ({ p
     page.getByRole('link', { name: 'Contrata Balrock en Gigstarter' }),
   ).toBeVisible()
   await expect(
+    page.getByText(
+      'El widget de Gigstarter no se pudo cargar, pero el enlace de contratación sigue disponible.',
+    ),
+  ).toBeVisible()
+  await expect(
     page.getByRole('heading', { name: 'Próximos Conciertos' }),
   ).toBeVisible()
   await expect(page.getByText('17 de Abril, 2026')).toBeVisible()
@@ -59,6 +64,7 @@ test('renders the landing page with hero, concerts, and primary CTA', async ({ p
   await expect(
     page.getByRole('navigation', { name: 'Redes sociales de Balrock' }),
   ).toBeVisible()
+  await expect(page.locator('iframe[data-cmp-src]')).toHaveCount(4)
 })
 
 test('uses the mobile hero background and keeps the CTA visible', async ({ page }) => {
