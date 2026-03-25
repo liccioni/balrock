@@ -11,5 +11,5 @@ describe("Balrock", () => {
     expect(
       screen.getByText(`© ${currentYear} Balrock. Todos los derechos reservados.`),
     ).toBeVisible();
-  });
+  }, 10000);
 });

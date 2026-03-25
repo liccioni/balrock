@@ -27,7 +27,9 @@ describe("ConcertsSection", () => {
     );
 
     expect(screen.getByText("17 de Abril, 2026")).toBeVisible();
-    expect(screen.getByText("Barcelona, España - Bar Ceferino")).toBeVisible();
+    expect(screen.getByText("Bar Ceferino")).toBeVisible();
+    expect(screen.getByText("Barcelona, España")).toBeVisible();
+    expect(screen.getByText("Próximamente")).toBeVisible();
     expect(
       screen.queryByRole("link", { name: "Compra tu entrada" }),
     ).not.toBeInTheDocument();
@@ -54,7 +56,9 @@ describe("ConcertsSection", () => {
 
     expect(screen.getByText("17 de Abril, 2026")).toBeVisible();
     expect(screen.getByText("3 de Mayo, 2026")).toBeVisible();
-    expect(screen.getByText("Madrid, España - Sala Mon")).toBeVisible();
+    expect(screen.getByText("Sala Mon")).toBeVisible();
+    expect(screen.getByText("Madrid, España")).toBeVisible();
+    expect(screen.getByText("Próximamente")).toBeVisible();
 
     const buyLinks = screen.getAllByRole("link", { name: "Compra tu entrada" });
     expect(buyLinks).toHaveLength(1);

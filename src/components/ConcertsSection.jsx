@@ -4,37 +4,49 @@ import { formatShowDate } from "../content/siteContent";
 export default function ConcertsSection({ shows }) {
   return (
     <section aria-labelledby="concerts-heading" className="pt-4 text-left">
-      <h2 id="concerts-heading" className="text-3xl font-bold uppercase text-white md:text-4xl">
+      <h2
+        id="concerts-heading"
+        className="text-3xl font-bold uppercase text-white md:text-4xl"
+        style={{ fontFamily: "'Cinzel', serif" }}
+      >
         Próximos Conciertos
       </h2>
+      <p className="mt-4 max-w-2xl text-base text-gray-400">
+        Salas confirmadas, primeras entradas activas y una lectura más limpia
+        para cerrar la página con intención.
+      </p>
       <div className="mt-8 max-w-3xl">
         {shows.length > 0 ? (
-          <ul className="list-none m-0 p-0">
+          <ul className="concert-list list-none m-0 p-0">
             {shows.map((show) => (
-            <li
-              key={`${show.date}-${show.venue}`}
-              className="border-b border-white/10 py-5"
-            >
-              <p className="text-xl font-semibold text-red-300">
-                {formatShowDate(show.date)}
-              </p>
-              <p className="mt-2 text-lg text-gray-300">
-                {show.location} - {show.venue}
-              </p>
-              {show.buyLink ? (
-                <p className="mt-3">
-                  <a
-                    href={show.buyLink}
-                    className="text-red-400 hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-red-400 focus-visible:ring-offset-2 focus-visible:ring-offset-black rounded-sm"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    Compra tu entrada
-                  </a>
-                </p>
-              ) : null}
-            </li>
-          ))}
+              <li
+                key={`${show.date}-${show.venue}`}
+                className="concert-item"
+              >
+                <div className="concert-date-lockup">
+                  <p className="concert-date">{formatShowDate(show.date)}</p>
+                  <p className="concert-label">Escenario confirmado</p>
+                </div>
+                <div className="concert-meta">
+                  <p className="concert-venue">{show.venue}</p>
+                  <p className="concert-location">{show.location}</p>
+                </div>
+                <div className="concert-action">
+                  {show.buyLink ? (
+                    <a
+                      href={show.buyLink}
+                      className="concert-link"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      Compra tu entrada
+                    </a>
+                  ) : (
+                    <span className="concert-status">Próximamente</span>
+                  )}
+                </div>
+              </li>
+            ))}
           </ul>
         ) : (
           <p className="text-lg text-gray-400">

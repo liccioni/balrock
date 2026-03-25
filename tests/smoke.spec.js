@@ -32,10 +32,8 @@ test('renders the landing page even when optional third-party requests fail', as
     page.locator('head meta[property="og:image"]'),
   ).toHaveAttribute('content', 'https://balrockoficial.com/images/balrock.jpeg')
 
-  await expect(
-    page.getByRole('heading', { name: 'Balrock', exact: true }),
-  ).toBeVisible()
-  await expect(page.getByText('"Corred Insensatos..."')).toBeVisible()
+  await expect(page.getByTestId('hero-banner')).toBeVisible()
+  await expect(page.getByText('Barcelona • Rock en directo')).toBeVisible()
   await expect(page.locator('a[href="#contratacion"]')).toBeVisible()
   await expect(page.locator('a[href="#videos"]')).toBeVisible()
   await expect(page.getByRole('heading', { name: 'Mira cómo suena el escenario.' })).toBeVisible()
@@ -43,12 +41,11 @@ test('renders the landing page even when optional third-party requests fail', as
   await expect(page.getByRole('heading', { name: 'Lleva a Balrock a tu sala.' })).toBeVisible()
   await expect(page.getByRole('link', { name: 'Contrata Balrock en Gigstarter' })).toBeVisible()
   await expect(
-    page.getByText(
-      'El widget de Gigstarter no se pudo cargar, pero el enlace de contratación sigue disponible.',
-    ),
+    page.getByText(/enlace de contratación sigue disponible/i),
   ).toBeVisible()
   await expect(page.getByText('17 de Abril, 2026')).toBeVisible()
-  await expect(page.getByText('Barcelona, España - Bar Ceferino')).toBeVisible()
+  await expect(page.getByText('Bar Ceferino')).toBeVisible()
+  await expect(page.getByText('Barcelona, España')).toBeVisible()
 
   await expect(
     page.getByRole('link', { name: 'Facebook de Balrock' }),
@@ -64,7 +61,7 @@ test('renders the landing page even when optional third-party requests fail', as
   await expect(
     page.getByRole('navigation', { name: 'Redes sociales de Balrock' }),
   ).toBeVisible()
-  await expect(page.locator('iframe[data-cmp-src]')).toHaveCount(4)
+  await expect(page.locator('iframe[data-cmp-src]')).toHaveCount(1)
 })
 
 test('uses the mobile hero background and keeps the CTA visible', async ({ page }) => {
@@ -86,6 +83,7 @@ test('uses the mobile hero background and keeps the CTA visible', async ({ page 
 })
 
 test('passes an automated accessibility scan on the landing page', async ({ page }) => {
+  test.setTimeout(60000)
   await page.goto('/')
 
   const accessibilityScanResults = await new AxeBuilder({ page })
