@@ -6,9 +6,11 @@
   "scripts": {
     "dev": "vite",
     "build": "vite build",
+    "build:base-path": "VITE_PUBLIC_BASE=/balrock/ vite build",
     "lint": "eslint .",
-    "test": "npm run test:unit && npm run build && npm run test:smoke",
+    "test": "npm run test:unit && npm run build && npm run test:smoke && npm run test:smoke:base-path",
     "test:smoke": "playwright test",
+    "test:smoke:base-path": "playwright test --config=playwright.base-path.config.js",
     "test:unit": "vitest run",
     "ci": "npm run lint && npm run test",
     "preview": "vite preview"

@@ -13,7 +13,7 @@ test.beforeEach(async ({ page, baseURL }) => {
   })
 })
 
-test('renders the landing page and current concert details', async ({ page }) => {
+test('renders the landing page with hero, concerts, and primary CTA', async ({ page }) => {
   await page.goto('/')
 
   await expect(
@@ -21,12 +21,39 @@ test('renders the landing page and current concert details', async ({ page }) =>
   ).toBeVisible()
   await expect(page.getByText('Desatando la furia del inframundo.')).toBeVisible()
   await expect(
+    page.getByRole('link', { name: 'Contrata Balrock en Gigstarter' }),
+  ).toBeVisible()
+  await expect(
     page.getByRole('heading', { name: 'Próximos Conciertos' }),
   ).toBeVisible()
   await expect(page.getByText('17 de Abril, 2026')).toBeVisible()
   await expect(page.getByText('Barcelona, España - Bar Ceferino')).toBeVisible()
 
   await expect(
-    page.locator('a[href="https://www.facebook.com/balrockband"]'),
+    page.getByRole('link', { name: 'Facebook de Balrock' }),
   ).toBeVisible()
+  await expect(
+    page.getByRole('link', { name: 'Instagram de Balrock' }),
+  ).toBeVisible()
+  await expect(
+    page.getByRole('link', { name: 'Canal de YouTube de Balrock' }),
+  ).toBeVisible()
+})
+
+test('uses the mobile hero background and keeps the CTA visible', async ({ page }) => {
+  const viewportSize = page.viewportSize()
+  test.skip(!viewportSize || viewportSize.width > 767, 'mobile-only smoke')
+
+  await page.goto('/')
+
+  await expect(page.getByTestId('hero-banner')).toBeVisible()
+  await expect(
+    page.getByRole('link', { name: 'Contrata Balrock en Gigstarter' }),
+  ).toBeVisible()
+
+  const heroBackgroundImage = await page.getByTestId('hero-banner').evaluate((element) => {
+    return window.getComputedStyle(element).backgroundImage
+  })
+
+  expect(heroBackgroundImage).toContain('banner-mobile.png')
 })

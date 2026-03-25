@@ -7,11 +7,21 @@ import GigstarterButton from "./GigstarterButton";
 import { images, upcomingShows, videos } from "./content/siteContent";
 
 export default function BalrockPage() {
+  const baseUrl = import.meta.env.BASE_URL;
   const currentYear = new Date().getFullYear();
+  const heroBackgroundStyle = {
+    "--banner-desktop": `url('${baseUrl}images/banner-desktop.png')`,
+    "--banner-tablet": `url('${baseUrl}images/banner-tablet.png')`,
+    "--banner-mobile": `url('${baseUrl}images/banner-mobile.png')`,
+  };
 
   return (
     <div className="bg-black text-gray-200 font-sans">
-      <section className="relative h-screen bg-cover bg-center banner-background">
+      <section
+        className="relative h-screen bg-cover bg-center banner-background"
+        data-testid="hero-banner"
+        style={heroBackgroundStyle}
+      >
         <div className="relative z-10 flex flex-col items-center justify-end h-full">
           <motion.h1
             style={{ fontFamily: "'Cinzel', serif" }}
@@ -108,6 +118,7 @@ export default function BalrockPage() {
         <div className="flex justify-center space-x-8">
           <motion.a
             href="https://www.instagram.com/balrockoficial/"
+            aria-label="Instagram de Balrock"
             className="text-gray-400 hover:text-red-500 text-3xl"
             whileHover={{ scale: 1.1 }}
           >
@@ -115,6 +126,7 @@ export default function BalrockPage() {
           </motion.a>
           <motion.a
             href="https://www.youtube.com/@balrockoficial"
+            aria-label="Canal de YouTube de Balrock"
             className="text-gray-400 hover:text-red-500 text-3xl"
             whileHover={{ scale: 1.1 }}
           >
@@ -122,6 +134,7 @@ export default function BalrockPage() {
           </motion.a>
           <motion.a
             href="https://www.facebook.com/balrockband"
+            aria-label="Facebook de Balrock"
             className="text-gray-400 hover:text-red-500 text-3xl"
             whileHover={{ scale: 1.1 }}
           >

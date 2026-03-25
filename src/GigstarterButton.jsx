@@ -17,7 +17,12 @@ export default function GigstarterButton() {
 
   return (
     <div className="gigstarter-button" data-slug="balrock" data-version="1">
-      <a href="https://www.gigstarter.es/artists/balrock" target="_blank" rel="noopener noreferrer">
+      <a
+        href="https://www.gigstarter.es/artists/balrock"
+        aria-label="Contrata Balrock en Gigstarter"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
         <img
           src={hireUsImage}
           alt="Contrata Balrock"
