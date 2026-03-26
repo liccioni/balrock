@@ -28,7 +28,7 @@ export default function VideoSection({ videos, images }) {
       <div className="video-vault vinyl-card mt-8 overflow-hidden border border-white/10">
         <div className="video-stage-header">
           <p className="video-rail-kicker">Directo</p>
-          <p className="video-stage-note">Selecciona un corte y sigue dentro del escenario.</p>
+          <p className="video-stage-note">Toca un corte y sigue dentro del escenario.</p>
         </div>
         <div className="video-showcase-grid">
           <article key={activeVideo.src} className="video-feature">
@@ -56,23 +56,23 @@ export default function VideoSection({ videos, images }) {
               const isActive = video.originalIndex === activeVideoIndex;
 
               return (
-              <button
-                key={video.src}
-                type="button"
-                onClick={() => setActiveVideoIndex(video.originalIndex)}
-                aria-pressed={isActive}
-                className={`video-rail-card ${isActive ? "is-active" : ""}`}
-              >
-                <div
-                  className="video-rail-image"
-                  style={{ backgroundImage: `url('${video.still.src}')` }}
-                  aria-hidden="true"
-                />
-                <div className="video-rail-copy">
-                  <p className="video-rail-kicker">Corte {video.originalIndex + 1}</p>
-                  <p className="video-rail-title">{video.title}</p>
-                </div>
-              </button>
+                <button
+                  key={video.src}
+                  type="button"
+                  onClick={() => setActiveVideoIndex(video.originalIndex)}
+                  aria-pressed={isActive}
+                  className={`video-rail-card ${isActive ? "is-active" : ""}`}
+                >
+                  <div
+                    className="video-rail-image"
+                    style={{ backgroundImage: `url('${video.still.src}')` }}
+                    aria-hidden="true"
+                  />
+                  <div className="video-rail-copy">
+                    <p className="video-rail-kicker">Corte {video.originalIndex + 1}</p>
+                    <p className="video-rail-title">{video.title}</p>
+                  </div>
+                </button>
               );
             })}
           </div>

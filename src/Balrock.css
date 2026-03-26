@@ -379,6 +379,15 @@ body {
   gap: 0.6rem;
 }
 
+.video-rail::-webkit-scrollbar {
+  height: 0.45rem;
+}
+
+.video-rail::-webkit-scrollbar-thumb {
+  background: rgba(139, 0, 0, 0.45);
+  border-radius: 999px;
+}
+
 .video-rail-card {
   display: grid;
   grid-template-columns: 6.5rem minmax(0, 1fr);
@@ -526,7 +535,29 @@ body {
     padding: 0.9rem 1rem 0.1rem;
   }
 
+  .video-rail {
+    display: flex;
+    gap: 0.85rem;
+    overflow-x: auto;
+    padding: 0.15rem 0.1rem 0.35rem;
+    scroll-padding-inline: 0.1rem;
+    scroll-snap-type: x proximity;
+    -webkit-overflow-scrolling: touch;
+  }
+
   .video-rail-card {
-    grid-template-columns: 1fr;
+    min-width: min(19rem, 84vw);
+    flex: 0 0 auto;
+    grid-template-columns: 5.25rem minmax(0, 1fr);
+    scroll-snap-align: start;
+  }
+
+  .video-rail-image {
+    height: 4.35rem;
+  }
+
+  .video-rail-title {
+    font-size: 0.84rem;
+    line-height: 1.42;
   }
 }
