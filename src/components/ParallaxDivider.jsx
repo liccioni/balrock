@@ -8,8 +8,10 @@ export default function ParallaxDivider({ imageSrc, altLabel, variant }) {
     target: dividerRef,
     offset: ["start end", "end start"],
   });
-  const y = useTransform(scrollYProgress, [0, 1], ["-10%", "10%"]);
-  const scale = useTransform(scrollYProgress, [0, 1], [1.08, 1.02]);
+  const y = useTransform(scrollYProgress, [0, 1], ["-14%", "14%"]);
+  const scale = useTransform(scrollYProgress, [0, 1], [1.14, 1.03]);
+  const glowOpacity = useTransform(scrollYProgress, [0, 0.5, 1], [0.2, 0.45, 0.22]);
+  const glowScale = useTransform(scrollYProgress, [0, 1], [0.92, 1.08]);
 
   return (
     <div
@@ -20,6 +22,10 @@ export default function ParallaxDivider({ imageSrc, altLabel, variant }) {
       <motion.div
         className="parallax-divider-image absolute inset-0"
         style={{ backgroundImage: `url('${imageSrc}')`, y, scale }}
+      />
+      <motion.div
+        className="parallax-divider-light absolute inset-0"
+        style={{ opacity: glowOpacity, scale: glowScale }}
       />
       <div className="parallax-divider-overlay absolute inset-0" />
       <div className="parallax-divider-grain absolute inset-0" />

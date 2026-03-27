@@ -4,6 +4,7 @@ import ConcertsSection from "./components/ConcertsSection";
 import ContactSection from "./components/ContactSection";
 import HeroSection from "./components/HeroSection";
 import ParallaxDivider from "./components/ParallaxDivider";
+import SceneStatement from "./components/SceneStatement";
 import SpotifySection from "./components/SpotifySection";
 import VideoSection from "./components/VideoSection";
 import { images, spotifyEmbedUrl, upcomingShows, videos } from "./content/siteContent";
@@ -19,12 +20,26 @@ export default function BalrockPage() {
       <div className="texture-overlay" />
       <div className="page-content">
         <HeroSection imageSrc={images[0].src} />
-        <main>
+        <main className="scene-main">
+          <SceneStatement
+            eyebrow="Entra en escena"
+            title="Riff. Humo. Golpe."
+            body="El directo entra pesado y no te suelta."
+            align="left"
+            tone="ember"
+          />
           <VideoSection videos={videos} images={images} />
           <ParallaxDivider
             imageSrc={images[3].src}
             altLabel="Balrock en directo como divisor visual"
             variant="ash"
+          />
+          <SceneStatement
+            eyebrow="Siguiente corte"
+            title="Noche cerrada. Sala llena."
+            body="Amplis arriba. Pulso firme. Todo empuja hacia delante."
+            align="right"
+            tone="ash"
           />
           <ConcertsSection shows={upcomingShows} />
           <ParallaxDivider
@@ -33,6 +48,13 @@ export default function BalrockPage() {
             variant="shard"
           />
           <SpotifySection embedUrl={spotifyEmbedUrl} />
+          <SceneStatement
+            eyebrow="Último acto"
+            title="Sube. Mira. Ven."
+            body="Escucha el directo. Mira fechas. Trae a Balrock."
+            align="left"
+            tone="ember"
+          />
           <ContactSection />
         </main>
         <footer className="border-t border-white/10 bg-[#111111]/82 py-14 text-center">

@@ -1,24 +1,54 @@
 import PropTypes from "prop-types";
+import { motion, useScroll, useTransform } from "framer-motion";
+import { useRef } from "react";
 import { formatShowDate } from "../content/siteContent";
 
 export default function ConcertsSection({ shows }) {
+  const sectionRef = useRef(null);
+  const { scrollYProgress } = useScroll({
+    target: sectionRef,
+    offset: ["start end", "end start"],
+  });
+  const ghostY = useTransform(scrollYProgress, [0, 1], ["18%", "-12%"]);
+  const panelX = useTransform(scrollYProgress, [0, 1], ["3%", "-3%"]);
+  const shouldAnimateIn = import.meta.env.MODE !== "test";
+
   return (
-    <section
+    <motion.section
+      ref={sectionRef}
       aria-labelledby="concerts-heading"
       className="section-frame mx-auto w-full max-w-6xl px-5 py-18 text-left sm:px-6 md:px-10 lg:px-16"
+      initial={shouldAnimateIn ? { opacity: 0, y: 44 } : false}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true, amount: 0.25 }}
+      transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
     >
-      <p className="section-kicker">
-        Próximos conciertos
-      </p>
-      <h2 id="concerts-heading" className="band-heading mt-4 text-4xl sm:text-5xl md:text-6xl">
-        Próximos conciertos
-      </h2>
-      <div className="concerts-panel vinyl-card mt-8 max-w-4xl border border-white/10">
+      <div className="section-scene-header">
+        <div className="section-scene-copy">
+          <p className="section-kicker">
+            Próximos conciertos
+          </p>
+          <h2 id="concerts-heading" className="band-heading mt-4 text-4xl sm:text-5xl md:text-6xl">
+            Próximos conciertos
+          </h2>
+        </div>
+        <motion.div
+          className="scene-ghost-word scene-ghost-word--tight"
+          style={{ y: ghostY }}
+          aria-hidden="true"
+        >
+          GIGS
+        </motion.div>
+      </div>
+      <motion.div
+        className="concerts-panel vinyl-card mt-8 max-w-5xl border border-white/10"
+        style={{ x: panelX }}
+      >
         {shows.length > 0 ? (
           <ul className="list-none m-0 p-0">
             {shows.map((show) => (
               <li key={`${show.date}-${show.venue}`} className="gig-row px-4 py-4 sm:px-5">
-                <div className="flex flex-col gap-1 md:flex-row md:items-baseline md:justify-between md:gap-6">
+                <div className="gig-row-layout flex flex-col gap-3 md:flex-row md:items-baseline md:justify-between md:gap-6">
                   <div>
                     <p className="concert-date">
                       {formatShowDate(show.date)}
@@ -50,8 +80,8 @@ export default function ConcertsSection({ shows }) {
             No hay conciertos anunciados por ahora. Vuelve pronto.
           </p>
         )}
-      </div>
-    </section>
+      </motion.div>
+    </motion.section>
   );
 }
 

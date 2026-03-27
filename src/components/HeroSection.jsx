@@ -1,14 +1,52 @@
 import PropTypes from "prop-types";
+import { motion, useScroll, useTransform } from "framer-motion";
+import { useRef } from "react";
 
 export default function HeroSection({ imageSrc }) {
+  const heroRef = useRef(null);
+  const { scrollYProgress } = useScroll({
+    target: heroRef,
+    offset: ["start start", "end start"],
+  });
+  const imageY = useTransform(scrollYProgress, [0, 1], ["0%", "24%"]);
+  const imageScale = useTransform(scrollYProgress, [0, 1], [1.02, 1.14]);
+  const copyY = useTransform(scrollYProgress, [0, 1], ["0%", "34%"]);
+  const railY = useTransform(scrollYProgress, [0, 1], ["0%", "24%"]);
+  const orbitRotate = useTransform(scrollYProgress, [0, 1], ["0deg", "24deg"]);
+  const glowY = useTransform(scrollYProgress, [0, 1], ["0%", "-18%"]);
+  const glowOpacity = useTransform(scrollYProgress, [0, 0.6, 1], [0.85, 0.45, 0.12]);
+  const shouldAnimateIn = import.meta.env.MODE !== "test";
+
   return (
     <header
+      ref={heroRef}
       className="hero-photo relative isolate flex min-h-screen items-end overflow-hidden bg-[#090807]"
       data-testid="hero-banner"
       style={{ backgroundImage: `url('${imageSrc}')` }}
     >
+      <motion.div
+        className="hero-backdrop-motion"
+        style={{ y: imageY, scale: imageScale }}
+        aria-hidden="true"
+      />
+      <motion.div
+        className="hero-noise-orbit"
+        style={{ rotate: orbitRotate }}
+        aria-hidden="true"
+      />
+      <motion.div
+        className="hero-glow-band"
+        style={{ y: glowY, opacity: glowOpacity }}
+        aria-hidden="true"
+      />
       <div className="relative z-10 mx-auto flex min-h-screen w-full max-w-6xl items-end px-5 pb-10 pt-24 sm:px-6 md:px-10 md:pb-14 lg:px-16 lg:pb-18">
-        <div className="max-w-md">
+        <motion.div
+          initial={shouldAnimateIn ? { opacity: 0, y: 34 } : false}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.9, ease: [0.22, 1, 0.36, 1] }}
+          style={{ y: copyY }}
+          className="hero-copy-stack max-w-md"
+        >
           <p className="section-kicker">
             Hard Rock desde Barcelona
           </p>
@@ -26,7 +64,19 @@ export default function HeroSection({ imageSrc }) {
               Ver directo
             </a>
           </div>
-        </div>
+        </motion.div>
+        <motion.div
+          initial={shouldAnimateIn ? { opacity: 0, x: 28 } : false}
+          animate={{ opacity: 1, x: 0 }}
+          transition={{ duration: 1, delay: 0.15, ease: [0.22, 1, 0.36, 1] }}
+          style={{ y: railY }}
+          className="hero-scene-rail"
+        >
+          <span>Barcelona</span>
+          <span>Riffs densos</span>
+          <span>Directo</span>
+          <span>Noche cerrada</span>
+        </motion.div>
       </div>
     </header>
   );
