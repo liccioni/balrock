@@ -29,7 +29,7 @@ export default function ConcertsSection({ shows }) {
             Próximos conciertos
           </p>
           <h2 id="concerts-heading" className="band-heading mt-4 text-4xl sm:text-5xl md:text-6xl">
-            Próximos conciertos
+            Próximas descargas.
           </h2>
         </div>
         <motion.div
@@ -77,7 +77,7 @@ export default function ConcertsSection({ shows }) {
           </ul>
         ) : (
           <p className="px-4 py-4 text-base text-[#c2bab2] sm:px-5">
-            No hay conciertos anunciados por ahora. Vuelve pronto.
+            Aún no hay fecha cerrada. Vuelve pronto.
           </p>
         )}
       </motion.div>

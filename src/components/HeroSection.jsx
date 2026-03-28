@@ -68,7 +68,7 @@ export default function HeroSection({ imageSrc, secondaryImageSrc }) {
             Balrock
           </h1>
           <p className="hero-tagline mt-4 max-w-sm text-sm sm:text-base">
-            DURO. CRUDO. BALROCK.
+            HARD ROCK OSCURO. CRUDO. SIN FRENOS.
           </p>
           <div className="mt-8">
             <a
@@ -87,9 +87,9 @@ export default function HeroSection({ imageSrc, secondaryImageSrc }) {
           className={`hero-scene-rail ${isArtworkHero ? "hero-scene-rail--artwork" : ""}`}
         >
           <span>Barcelona</span>
-          <span>Riffs densos</span>
+          <span>Sombra</span>
+          <span>Pulso</span>
           <span>Directo</span>
-          <span>Noche cerrada</span>
         </motion.div>
       </div>
     </header>

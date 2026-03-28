@@ -7,7 +7,7 @@ describe("ConcertsSection", () => {
     render(<ConcertsSection shows={[]} />);
 
     expect(
-      screen.getByText("No hay conciertos anunciados por ahora. Vuelve pronto."),
+      screen.getByText("Aún no hay fecha cerrada. Vuelve pronto."),
     ).toBeVisible();
   });
 

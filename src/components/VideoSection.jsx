@@ -38,10 +38,10 @@ export default function VideoSection({ videos, images }) {
             Videos
           </p>
           <h2 id="video-heading" className="band-heading mt-4 text-4xl sm:text-5xl md:text-6xl">
-            El escenario habla.
+            El escenario muerde.
           </h2>
           <p className="band-copy mt-4 max-w-xl">
-            Le das al play. Lo sientes.
+            Cortes en crudo. Humo, presión y amplis al rojo.
           </p>
         </div>
         <motion.div className="scene-ghost-word" style={{ y: ghostY }} aria-hidden="true">
@@ -55,7 +55,7 @@ export default function VideoSection({ videos, images }) {
         <div className="video-vault-glow" aria-hidden="true" />
         <div className="video-stage-header">
           <p className="video-rail-kicker">Corte {activeVideo.originalIndex + 1}</p>
-          <p className="video-stage-note">Cada corte abre otra cara del directo.</p>
+          <p className="video-stage-note">Directo sin maquillaje.</p>
         </div>
         <motion.div className="video-stage-scene" style={{ y: stageY }}>
           <div
@@ -97,7 +97,7 @@ export default function VideoSection({ videos, images }) {
             </p>
             <p className="video-stage-meta-label">Directo en crudo</p>
             <p className="video-stage-meta-copy">
-              Sin filtro. Sin pausa. Cada toma empuja distinto.
+              Guitarras tensas. Batería al pecho. Todo va hacia delante.
             </p>
           </motion.aside>
         </motion.div>

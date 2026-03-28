@@ -28,7 +28,7 @@ export default function ContactSection() {
             Contacto
           </p>
           <h2 id="contact-heading" className="band-heading mt-4 text-4xl sm:text-5xl md:text-6xl">
-            Únete al ruido.
+            Entra en contacto.
           </h2>
         </div>
         <motion.div
@@ -76,7 +76,7 @@ export default function ContactSection() {
           Trae a Balrock.
         </h3>
         <p className="band-copy mx-auto mt-3 max-w-xl text-sm sm:text-base">
-          Sala, festival o garito. Si hay volumen, entramos.
+          Sala, festival o garito. Si buscas una noche dura y con pegada, hablamos.
         </p>
         <div className="mt-8">
           <GigstarterButton />

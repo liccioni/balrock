@@ -23,8 +23,8 @@ export default function BalrockPage() {
         <main className="scene-main">
           <SceneStatement
             eyebrow="Entra en escena"
-            title="Riff. Humo. Golpe."
-            body="El directo entra pesado y no te suelta."
+            title="Ruido bajo la piel."
+            body="Todo entra denso, oscuro y de frente."
             align="left"
             tone="ember"
           />
@@ -36,8 +36,8 @@ export default function BalrockPage() {
           />
           <SceneStatement
             eyebrow="Siguiente corte"
-            title="Noche cerrada. Sala llena."
-            body="Amplis arriba. Pulso firme. Todo empuja hacia delante."
+            title="Noche cerrada. Pulso arriba."
+            body="El golpe llega seco. La sala responde."
             align="right"
             tone="ash"
           />
@@ -50,8 +50,8 @@ export default function BalrockPage() {
           <SpotifySection embedUrl={spotifyEmbedUrl} />
           <SceneStatement
             eyebrow="Último acto"
-            title="Sube. Mira. Ven."
-            body="Escucha el directo. Mira fechas. Trae a Balrock."
+            title="Entra. Mira. Trae ruido."
+            body="Si quieres a Balrock en tu sala, abre la puerta y sube el volumen."
             align="left"
             tone="ember"
           />
