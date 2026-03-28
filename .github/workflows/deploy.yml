@@ -47,12 +47,11 @@ jobs:
       - name: Package Pages artifact
         run: |
           tar --directory dist --create --file github-pages.tar --dereference --hard-dereference .
-          gzip --force github-pages.tar
       - name: Upload artifact
         uses: actions/upload-artifact@v6
         with:
           name: github-pages
-          path: ./github-pages.tar.gz
+          path: ./github-pages.tar
           retention-days: 1
       - name: Deploy to GitHub Pages
         id: deployment
