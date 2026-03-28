@@ -17,7 +17,8 @@ export default function VideoSection({ videos, images }) {
   });
   const ghostY = useTransform(scrollYProgress, [0, 1], ["16%", "-16%"]);
   const vaultY = useTransform(scrollYProgress, [0, 1], ["8%", "-8%"]);
-  const railY = useTransform(scrollYProgress, [0, 1], ["10%", "-6%"]);
+  const stageY = useTransform(scrollYProgress, [0, 1], ["6%", "-6%"]);
+  const stripY = useTransform(scrollYProgress, [0, 1], ["10%", "-10%"]);
   const shouldAnimateIn = import.meta.env.MODE !== "test";
 
   return (
@@ -54,9 +55,15 @@ export default function VideoSection({ videos, images }) {
         <div className="video-vault-glow" aria-hidden="true" />
         <div className="video-stage-header">
           <p className="video-rail-kicker">Corte {activeVideo.originalIndex + 1}</p>
-          <p className="video-stage-note">Toca un corte y sigue dentro del escenario.</p>
+          <p className="video-stage-note">Cada corte abre otra cara del directo.</p>
         </div>
-        <div className="video-showcase-grid">
+        <motion.div className="video-stage-scene" style={{ y: stageY }}>
+          <div
+            className="video-stage-backdrop"
+            style={{ backgroundImage: `url('${activeVideo.still.src}')` }}
+            aria-hidden="true"
+          />
+          <div className="video-stage-veil" aria-hidden="true" />
           <motion.article
             key={activeVideo.src}
             className="video-feature"
@@ -83,38 +90,49 @@ export default function VideoSection({ videos, images }) {
               </p>
             </div>
           </motion.article>
-          <motion.div
-            className="video-rail"
-            style={{ y: railY }}
-            aria-label="Selector de videos de Balrock"
-          >
-            {videoGallery.map((video) => {
-              const isActive = video.originalIndex === activeVideoIndex;
+          <motion.aside className="video-stage-meta" initial={shouldAnimateIn ? { opacity: 0, x: 24 } : false} animate={{ opacity: 1, x: 0 }} transition={{ duration: 0.7, delay: 0.08, ease: [0.22, 1, 0.36, 1] }}>
+            <p className="video-stage-count">
+              0{activeVideo.originalIndex + 1}
+              <span>/0{videoGallery.length}</span>
+            </p>
+            <p className="video-stage-meta-label">Directo en crudo</p>
+            <p className="video-stage-meta-copy">
+              Sin filtro. Sin pausa. Cada toma empuja distinto.
+            </p>
+          </motion.aside>
+        </motion.div>
+        <motion.div
+          className="video-strip"
+          style={{ y: stripY }}
+          aria-label="Selector de videos de Balrock"
+        >
+          {videoGallery.map((video) => {
+            const isActive = video.originalIndex === activeVideoIndex;
 
-              return (
-                <motion.button
-                  key={video.src}
-                  type="button"
-                  onClick={() => setActiveVideoIndex(video.originalIndex)}
-                  aria-pressed={isActive}
-                  className={`video-rail-card ${isActive ? "is-active" : ""}`}
-                  whileHover={{ x: 4 }}
-                  whileTap={{ scale: 0.985 }}
-                >
-                  <div
-                    className="video-rail-image"
-                    style={{ backgroundImage: `url('${video.still.src}')` }}
-                    aria-hidden="true"
-                  />
-                  <div className="video-rail-copy">
-                    <p className="video-rail-kicker">Corte {video.originalIndex + 1}</p>
-                    <p className="video-rail-title">{video.title}</p>
-                  </div>
-                </motion.button>
-              );
-            })}
-          </motion.div>
-        </div>
+            return (
+              <motion.button
+                key={video.src}
+                type="button"
+                onClick={() => setActiveVideoIndex(video.originalIndex)}
+                aria-pressed={isActive}
+                className={`video-strip-card ${isActive ? "is-active" : ""}`}
+                whileHover={{ y: -4 }}
+                whileTap={{ scale: 0.985 }}
+              >
+                <div
+                  className="video-strip-image"
+                  style={{ backgroundImage: `url('${video.still.src}')` }}
+                  aria-hidden="true"
+                />
+                <div className="video-strip-overlay" aria-hidden="true" />
+                <div className="video-strip-copy">
+                  <p className="video-rail-kicker">Corte {video.originalIndex + 1}</p>
+                  <p className="video-strip-title">{video.title}</p>
+                </div>
+              </motion.button>
+            );
+          })}
+        </motion.div>
       </motion.div>
     </motion.section>
   );
