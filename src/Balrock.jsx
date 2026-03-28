@@ -19,7 +19,7 @@ export default function BalrockPage() {
     <div className="balrock-page min-h-screen bg-[#090807] text-[#ddd5cc]">
       <div className="texture-overlay" />
       <div className="page-content">
-        <HeroSection imageSrc={images[0].src} />
+        <HeroSection imageSrc={images[0].src} secondaryImageSrc={images[1].src} />
         <main className="scene-main">
           <SceneStatement
             eyebrow="Entra en escena"

@@ -379,10 +379,31 @@ body {
   will-change: transform;
 }
 
+.hero-backdrop-base {
+  position: absolute;
+  inset: -4%;
+  background-position: center 32%;
+  background-repeat: no-repeat;
+  background-size: cover;
+  will-change: transform;
+}
+
+.hero-backdrop-base--artwork {
+  inset: -2% -5% 0% -5%;
+  background-position: center 28%;
+  background-size: cover;
+  opacity: 0.72;
+  filter: saturate(0.78) contrast(0.94) brightness(0.62);
+}
+
 .hero-backdrop-motion--artwork {
-  inset: 6% 10% 12% 30%;
-  background-position: center center;
-  background-size: contain;
+  inset: 0% 2% 5% 10%;
+  background-position: 50% 40%;
+  background-size: min(82vw, 98vh);
+  transform-origin: center 42%;
+  opacity: 0.78;
+  mix-blend-mode: lighten;
+  filter: saturate(0.88) contrast(1.02);
 }
 
 .hero-photo::before {
@@ -393,6 +414,12 @@ body {
   background:
     linear-gradient(180deg, rgba(0, 0, 0, 0.42) 0%, rgba(0, 0, 0, 0.58) 42%, rgba(0, 0, 0, 0.94) 100%),
     linear-gradient(90deg, rgba(0, 0, 0, 0.82) 0%, rgba(0, 0, 0, 0.26) 46%, rgba(0, 0, 0, 0.76) 100%);
+}
+
+.hero-photo--artwork::before {
+  background:
+    linear-gradient(180deg, rgba(0, 0, 0, 0.28) 0%, rgba(0, 0, 0, 0.44) 42%, rgba(0, 0, 0, 0.88) 100%),
+    linear-gradient(90deg, rgba(0, 0, 0, 0.7) 0%, rgba(0, 0, 0, 0.18) 46%, rgba(0, 0, 0, 0.62) 100%);
 }
 
 .hero-tagline {
@@ -410,7 +437,7 @@ body {
 }
 
 .hero-copy-stack--artwork {
-  max-width: 28rem;
+  max-width: 24rem;
 }
 
 .hero-noise-orbit {
@@ -455,7 +482,7 @@ body {
 
 .hero-scene-rail--artwork {
   align-self: flex-end;
-  margin-bottom: 2rem;
+  margin-bottom: 1rem;
 }
 
 .vinyl-card {
@@ -853,10 +880,17 @@ body {
     background-position: center 18%;
   }
 
+  .hero-backdrop-base--artwork {
+    inset: -1% -14% 10% -14%;
+    background-position: center 18%;
+    background-size: cover;
+    opacity: 0.62;
+  }
+
   .hero-backdrop-motion--artwork {
-    inset: 8% 8% 28% 8%;
-    background-position: center top;
-    background-size: contain;
+    inset: 5% -3% 22% -3%;
+    background-position: 50% 16%;
+    background-size: min(108vw, 78vh);
   }
 
   .hero-glow-band {

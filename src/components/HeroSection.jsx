@@ -2,13 +2,15 @@ import PropTypes from "prop-types";
 import { motion, useScroll, useTransform } from "framer-motion";
 import { useRef } from "react";
 
-export default function HeroSection({ imageSrc }) {
+export default function HeroSection({ imageSrc, secondaryImageSrc }) {
   const isArtworkHero = imageSrc.includes("balrock.jpeg");
   const heroRef = useRef(null);
   const { scrollYProgress } = useScroll({
     target: heroRef,
     offset: ["start start", "end start"],
   });
+  const baseImageY = useTransform(scrollYProgress, [0, 1], ["0%", "12%"]);
+  const baseImageScale = useTransform(scrollYProgress, [0, 1], [1.04, 1.1]);
   const imageY = useTransform(scrollYProgress, [0, 1], ["0%", "24%"]);
   const imageScale = useTransform(scrollYProgress, [0, 1], [1.02, 1.14]);
   const copyY = useTransform(scrollYProgress, [0, 1], ["0%", "34%"]);
@@ -25,6 +27,17 @@ export default function HeroSection({ imageSrc }) {
       data-testid="hero-banner"
       style={{ backgroundImage: `url('${imageSrc}')` }}
     >
+      {isArtworkHero && secondaryImageSrc ? (
+        <motion.div
+          className="hero-backdrop-base hero-backdrop-base--artwork"
+          style={{
+            backgroundImage: `url('${secondaryImageSrc}')`,
+            y: baseImageY,
+            scale: baseImageScale,
+          }}
+          aria-hidden="true"
+        />
+      ) : null}
       <motion.div
         className={`hero-backdrop-motion ${isArtworkHero ? "hero-backdrop-motion--artwork" : ""}`}
         style={{ backgroundImage: `url('${imageSrc}')`, y: imageY, scale: imageScale }}
@@ -85,4 +98,5 @@ export default function HeroSection({ imageSrc }) {
 
 HeroSection.propTypes = {
   imageSrc: PropTypes.string.isRequired,
+  secondaryImageSrc: PropTypes.string,
 };
