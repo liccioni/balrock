@@ -1,13 +1,21 @@
-import { FaFacebook, FaInstagram, FaYoutube } from "react-icons/fa";
+import { FaFacebook, FaInstagram, FaSoundcloud, FaYoutube } from "react-icons/fa";
 import "./Balrock.css";
 import ConcertsSection from "./components/ConcertsSection";
 import ContactSection from "./components/ContactSection";
+import GallerySection from "./components/GallerySection";
 import HeroSection from "./components/HeroSection";
 import ParallaxDivider from "./components/ParallaxDivider";
 import SceneStatement from "./components/SceneStatement";
-import SpotifySection from "./components/SpotifySection";
+import SoundCloudSection from "./components/SoundCloudSection";
 import VideoSection from "./components/VideoSection";
-import { images, spotifyEmbedUrl, upcomingShows, videos } from "./content/siteContent";
+import {
+  concertGallery,
+  images,
+  soundcloudEmbedUrl,
+  soundcloudProfileUrl,
+  upcomingShows,
+  videos,
+} from "./content/siteContent";
 
 const socialLinkClassName =
   "social-link inline-flex h-12 w-12 items-center justify-center rounded-full border border-white/10 bg-white/5 text-xl text-[#b3aba3] transition-colors hover:border-[#8b0000]/80 hover:text-[#e8e1d7] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#8b0000] focus-visible:ring-offset-2 focus-visible:ring-offset-[#0b0b0b]";
@@ -21,6 +29,7 @@ export default function BalrockPage() {
       <div className="page-content">
         <HeroSection imageSrc={images[0].src} secondaryImageSrc={images[1].src} />
         <main className="scene-main">
+          <ConcertsSection shows={upcomingShows} />
           <SceneStatement
             eyebrow="Entra en escena"
             title="Ruido bajo la piel."
@@ -41,13 +50,16 @@ export default function BalrockPage() {
             align="right"
             tone="ash"
           />
-          <ConcertsSection shows={upcomingShows} />
+          <GallerySection items={concertGallery} />
           <ParallaxDivider
             imageSrc={images[2].src}
             altLabel="Guitarra de Balrock como divisor visual"
             variant="shard"
           />
-          <SpotifySection embedUrl={spotifyEmbedUrl} />
+          <SoundCloudSection
+            embedUrl={soundcloudEmbedUrl}
+            profileUrl={soundcloudProfileUrl}
+          />
           <SceneStatement
             eyebrow="Último acto"
             title="Entra. Mira. Trae ruido."
@@ -79,6 +91,13 @@ export default function BalrockPage() {
                 className={socialLinkClassName}
               >
                 <FaYoutube />
+              </a>
+              <a
+                href="https://soundcloud.com/balrock-oficial"
+                aria-label="SoundCloud de Balrock"
+                className={socialLinkClassName}
+              >
+                <FaSoundcloud />
               </a>
               <a
                 href="https://www.facebook.com/balrockband"

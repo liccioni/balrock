@@ -17,7 +17,7 @@ export default function ConcertsSection({ shows }) {
     <motion.section
       ref={sectionRef}
       aria-labelledby="concerts-heading"
-      className="section-frame mx-auto w-full max-w-6xl px-5 py-18 text-left sm:px-6 md:px-10 lg:px-16"
+      className="section-frame concerts-section concerts-section--spotlight mx-auto w-full max-w-6xl px-5 py-18 text-left sm:px-6 md:px-10 lg:px-16"
       initial={shouldAnimateIn ? { opacity: 0, y: 44 } : false}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, amount: 0.25 }}
@@ -31,6 +31,9 @@ export default function ConcertsSection({ shows }) {
           <h2 id="concerts-heading" className="band-heading mt-4 text-4xl sm:text-5xl md:text-6xl">
             Próximas descargas.
           </h2>
+          <p className="band-copy mt-4 max-w-2xl">
+            La próxima fecha no se pierde. Aquí entra primero lo que viene antes de mirar atrás.
+          </p>
         </div>
         <motion.div
           className="scene-ghost-word scene-ghost-word--tight"

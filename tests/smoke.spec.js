@@ -38,6 +38,7 @@ test('renders the landing page even when optional third-party requests fail', as
   await expect(page.getByRole('link', { name: 'Ver directo' })).toBeVisible()
   await expect(page.getByRole('heading', { name: 'El escenario muerde.' })).toBeVisible()
   await expect(page.getByRole('heading', { name: 'Próximas descargas.' })).toBeVisible()
+  await expect(page.getByRole('heading', { name: 'Escucha los temas.' })).toBeVisible()
   await expect(page.getByRole('heading', { name: 'Entra en contacto.' })).toBeVisible()
   await expect(page.getByRole('heading', { name: 'Trae a Balrock.' })).toBeVisible()
   await expect(page.getByText('17 de Abril, 2026')).toBeVisible()
@@ -52,6 +53,9 @@ test('renders the landing page even when optional third-party requests fail', as
     page.getByRole('link', { name: 'Canal de YouTube de Balrock' }),
   ).toBeVisible()
   await expect(
+    page.getByRole('link', { name: 'SoundCloud de Balrock' }),
+  ).toBeVisible()
+  await expect(
     page.getByRole('link', { name: 'Facebook de Balrock' }),
   ).toBeVisible()
   await expect(page.getByRole('main')).toBeVisible()
@@ -59,6 +63,7 @@ test('renders the landing page even when optional third-party requests fail', as
   await expect(
     page.getByRole('navigation', { name: 'Redes sociales de Balrock' }),
   ).toBeVisible()
+  await expect(page.getByTitle('SoundCloud player de Balrock')).toBeVisible()
   await expect(page.locator('iframe[data-cmp-src]')).toHaveCount(1)
 })
 
