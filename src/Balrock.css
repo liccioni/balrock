@@ -365,6 +365,10 @@ body {
   background-size: cover;
 }
 
+.hero-photo--artwork {
+  background-image: none !important;
+}
+
 .hero-backdrop-motion {
   position: absolute;
   inset: -6%;
@@ -373,6 +377,12 @@ body {
   background-repeat: no-repeat;
   background-size: cover;
   will-change: transform;
+}
+
+.hero-backdrop-motion--artwork {
+  inset: 6% 10% 12% 30%;
+  background-position: center center;
+  background-size: contain;
 }
 
 .hero-photo::before {
@@ -397,6 +407,10 @@ body {
 .hero-copy-stack {
   position: relative;
   z-index: 1;
+}
+
+.hero-copy-stack--artwork {
+  max-width: 28rem;
 }
 
 .hero-noise-orbit {
@@ -437,6 +451,11 @@ body {
   letter-spacing: 0.32em;
   text-transform: uppercase;
   white-space: nowrap;
+}
+
+.hero-scene-rail--artwork {
+  align-self: flex-end;
+  margin-bottom: 2rem;
 }
 
 .vinyl-card {
@@ -832,6 +851,12 @@ body {
 
   .hero-backdrop-motion {
     background-position: center 18%;
+  }
+
+  .hero-backdrop-motion--artwork {
+    inset: 8% 8% 28% 8%;
+    background-position: center top;
+    background-size: contain;
   }
 
   .hero-glow-band {

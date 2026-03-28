@@ -3,6 +3,7 @@ import { motion, useScroll, useTransform } from "framer-motion";
 import { useRef } from "react";
 
 export default function HeroSection({ imageSrc }) {
+  const isArtworkHero = imageSrc.includes("balrock.jpeg");
   const heroRef = useRef(null);
   const { scrollYProgress } = useScroll({
     target: heroRef,
@@ -20,13 +21,13 @@ export default function HeroSection({ imageSrc }) {
   return (
     <header
       ref={heroRef}
-      className="hero-photo relative isolate flex min-h-screen items-end overflow-hidden bg-[#090807]"
+      className={`hero-photo ${isArtworkHero ? "hero-photo--artwork" : ""} relative isolate flex min-h-screen items-end overflow-hidden bg-[#090807]`}
       data-testid="hero-banner"
       style={{ backgroundImage: `url('${imageSrc}')` }}
     >
       <motion.div
-        className="hero-backdrop-motion"
-        style={{ y: imageY, scale: imageScale }}
+        className={`hero-backdrop-motion ${isArtworkHero ? "hero-backdrop-motion--artwork" : ""}`}
+        style={{ backgroundImage: `url('${imageSrc}')`, y: imageY, scale: imageScale }}
         aria-hidden="true"
       />
       <motion.div
@@ -45,7 +46,7 @@ export default function HeroSection({ imageSrc }) {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.9, ease: [0.22, 1, 0.36, 1] }}
           style={{ y: copyY }}
-          className="hero-copy-stack max-w-md"
+          className={`hero-copy-stack max-w-md ${isArtworkHero ? "hero-copy-stack--artwork" : ""}`}
         >
           <p className="section-kicker">
             Hard Rock desde Barcelona
@@ -70,7 +71,7 @@ export default function HeroSection({ imageSrc }) {
           animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 1, delay: 0.15, ease: [0.22, 1, 0.36, 1] }}
           style={{ y: railY }}
-          className="hero-scene-rail"
+          className={`hero-scene-rail ${isArtworkHero ? "hero-scene-rail--artwork" : ""}`}
         >
           <span>Barcelona</span>
           <span>Riffs densos</span>

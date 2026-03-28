@@ -2,6 +2,10 @@ const BASE_URL = import.meta.env.BASE_URL;
 
 export const images = [
   {
+    alt: "Ilustración monstruosa de Balrock emergiendo de la oscuridad",
+    src: `${BASE_URL}images/balrock.jpeg`,
+  },
+  {
     alt: "Balrock tocando en directo bajo luces rojas sobre el escenario",
     src: `${BASE_URL}images/balrock1.jpeg`,
   },

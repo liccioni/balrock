@@ -77,7 +77,7 @@ test('uses the mobile hero background and keeps the CTA visible', async ({ page 
     return window.getComputedStyle(element).backgroundImage
   })
 
-  expect(heroBackgroundImage).toContain('balrock1.jpeg')
+  expect(heroBackgroundImage).toContain('balrock.jpeg')
 })
 
 test('passes an automated accessibility scan on the landing page', async ({ page }) => {

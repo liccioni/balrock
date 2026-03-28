@@ -24,5 +24,5 @@ test('renders under a non-root base path and resolves hero assets correctly', as
     return window.getComputedStyle(element).backgroundImage
   })
 
-  expect(heroBackgroundImage).toContain('/balrock/images/balrock1.jpeg')
+  expect(heroBackgroundImage).toContain('/balrock/images/balrock.jpeg')
 })
