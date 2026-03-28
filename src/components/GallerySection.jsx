@@ -27,6 +27,7 @@ export default function GallerySection({ items }) {
   const backdropScale = useTransform(scrollYProgress, [0, 1], [1.06, 1.14]);
   const lightX = useTransform(scrollYProgress, [0, 1], ["-18%", "18%"]);
   const counterY = useTransform(scrollYProgress, [0, 1], ["4%", "-10%"]);
+  const sceneBarY = useTransform(scrollYProgress, [0, 1], ["10%", "-10%"]);
   const shouldAnimateIn = import.meta.env.MODE !== "test";
 
   useEffect(() => {
@@ -68,6 +69,17 @@ export default function GallerySection({ items }) {
       </div>
 
       <div className="gallery-lightbox mt-8">
+        <motion.div
+          className="gallery-scene-bar"
+          style={{ y: sceneBarY }}
+        >
+          <p className="gallery-scene-label">Archivo vivo</p>
+          <div className="gallery-scene-current">
+            <span>{activeConcert.dateLabel}</span>
+            <span>{activeConcert.venue}</span>
+          </div>
+        </motion.div>
+
         <motion.div
           className="gallery-concert-tabs"
           aria-label="Selector de conciertos"
@@ -111,10 +123,13 @@ export default function GallerySection({ items }) {
               <p className="gallery-feature-title">{activeConcert.title}</p>
               <p className="gallery-feature-venue">{activeConcert.venue}</p>
             </div>
-            <motion.p className="gallery-counter" style={{ y: counterY }}>
-              {String(activePhotoIndex + 1).padStart(2, "0")}
-              <span> / {String(activeConcert.photos.length).padStart(2, "0")}</span>
-            </motion.p>
+            <div className="gallery-topbar-meta">
+              <p className="gallery-topbar-note">Cortes del concierto</p>
+              <motion.p className="gallery-counter" style={{ y: counterY }}>
+                {String(activePhotoIndex + 1).padStart(2, "0")}
+                <span> / {String(activeConcert.photos.length).padStart(2, "0")}</span>
+              </motion.p>
+            </div>
           </motion.div>
 
           <motion.div className="gallery-photo-stage" style={{ y: photoY }}>
