@@ -44,16 +44,6 @@ export const images = [
 
 export const upcomingShows = [
   {
-    date: "2026-04-17",
-    location: "Barcelona, España",
-    venue: "Bar Ceferino",
-  },
-  {
-    date: "2026-05-08",
-    location: "Barcelona, España",
-    venue: "The Clubhouse Laietana",
-  },
-  {
     date: "2026-05-29",
     location: "Barcelona, España",
     venue: "Hangar 05",

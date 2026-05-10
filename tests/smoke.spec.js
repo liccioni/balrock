@@ -41,8 +41,8 @@ test('renders the landing page even when optional third-party requests fail', as
   await expect(page.getByRole('heading', { name: 'Escucha los temas.' })).toBeVisible()
   await expect(page.getByRole('heading', { name: 'Entra en contacto.' })).toBeVisible()
   await expect(page.getByRole('heading', { name: 'Trae a Balrock.' })).toBeVisible()
-  await expect(page.getByText('17 de Abril, 2026')).toBeVisible()
-  await expect(page.getByText('Bar Ceferino · Barcelona, España')).toBeVisible()
+  await expect(page.getByText('29 de Mayo, 2026')).toBeVisible()
+  await expect(page.getByText('Hangar 05 · Barcelona, España')).toBeVisible()
   await expect(page.getByRole('link', { name: 'balrockoficial@gmail.com' })).toBeVisible()
   await expect(page.getByRole('link', { name: 'Contrata Balrock en Gigstarter' })).toBeVisible()
 
